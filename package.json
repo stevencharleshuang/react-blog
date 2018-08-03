@@ -1,7 +1,7 @@
 {
   "name": "react-blog",
   "version": "1.0.0",
-  "description": "A blog made with create-react-app, JWT and express",
+  "description": "A blogging app made with create-react-app, JWT and express",
   "main": "server/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
