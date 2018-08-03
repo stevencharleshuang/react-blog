@@ -4,9 +4,22 @@
   "description": "A blog made with create-react-app, JWT and express",
   "main": "server/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client": "cd client && yarn start",
+    "server": "nodemon server.js",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
   },
   "keywords": [],
   "author": "Steven Charles Huang",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3",
+    "jsonwebtoken": "^8.3.0",
+    "pg-promise": "^8.4.5"
+  },
+  "devDependencies": {
+    "concurrently": "^3.6.1",
+    "morgan": "^1.9.0",
+    "nodemon": "^1.18.3"
+  }
 }
