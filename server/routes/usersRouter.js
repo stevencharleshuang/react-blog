@@ -10,6 +10,7 @@ const usersResponseController = require('../controllers/usersResponseController'
 
 usersRouter.route('/')
   .get(usersController.getAll, usersResponseController.sendJSON)
+  .post(usersController.register, usersResponseController.sendJSON)
 
 usersRouter.route('/:username')
   .get(usersController.getByUsername, usersResponseController.sendJSON)

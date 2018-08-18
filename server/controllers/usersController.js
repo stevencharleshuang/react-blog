@@ -39,7 +39,7 @@ module.exports = {
   async register(req, res, next) {
     try {
       console.log('userController register() says: req.body = ', req.body);
-      req.body.password_digest = bcrypt.hashSync(req.body.password_digest, 10);
+      req.body.password = bcrypt.hashSync(req.body.password, 10);
       res.locals.user = await usersModel.save(req.body);
       console.log('userController says: res.locals.user = ', res.locals.user);
       next();

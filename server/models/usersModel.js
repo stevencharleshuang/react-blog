@@ -29,18 +29,18 @@ module.exports =  {
       console.log('userDB says: save(user) = ', user);
       return db.one(`
         INSERT INTO users (
-                    fname,
-                    lname,
+                    name
                     username,
                     email,
-                    password_digest
+                    password,
+                    avatar_url
                     )
              VALUES (
-                    $/fname/,
-                    $/lname/,
+                    $/name/,
                     $/username/,
                     $/email/,
-                    $/password_digest/
+                    $/password/,
+                    $/avatar_url
                     )
           RETURNING *
       `, user);
