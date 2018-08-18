@@ -9,11 +9,11 @@ module.exports =  {
       `);
     },
 
-    findById(id) {
+    findByID(id) {
       return db.one(`
         SELECT *
           FROM users
-         WHERE user_id = $1
+         WHERE id = $1
       `, id);
     },
 

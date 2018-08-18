@@ -11,8 +11,11 @@ const usersResponseController = require('../controllers/usersResponseController'
 usersRouter.route('/')
   .get(usersController.getAll, usersResponseController.sendJSON)
 
-usersRouter.route('/:id')
+usersRouter.route('/:username')
   .get(usersController.getByUsername, usersResponseController.sendJSON)
+
+usersRouter.route('/user/:id')
+  .get(usersController.getByID, usersResponseController.sendJSON)
 
 function sendError(err, req, res, next) {
   console.log('I am error');

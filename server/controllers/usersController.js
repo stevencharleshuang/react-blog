@@ -13,9 +13,9 @@ module.exports = {
     }
   },
 
-  async getUser(req, res, next) {
+  async getByID(req, res, next) {
     try {
-      res.locals.user = await usersModel.findById(req.params.id);
+      res.locals.user = await usersModel.findByID(req.params.id);
       console.log('userController getUser() says: getUser req.params.id = ', req.params.id);
       next();
     }
@@ -27,8 +27,8 @@ module.exports = {
   // Once Auth is implemented, we will switch to this func
   async getByUsername(req, res, next) {
     try {
-      res.locals.user = await usersModel.findByUsername(req.params.id);
-      console.log('userController getOne() says: req.body = ', req.body);
+      res.locals.user = await usersModel.findByUsername(req.params.username);
+      // console.log('userController getOne() says: req.body = ', req.body);
       next();
     }
     catch (err) {
