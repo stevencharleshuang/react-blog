@@ -25,9 +25,9 @@ module.exports = {
   },
 
   // Once Auth is implemented, we will switch to this func
-  async getOne(req, res, next) {
+  async getByUsername(req, res, next) {
     try {
-      res.locals.user = await usersModel.findOne(req.body);
+      res.locals.user = await usersModel.findByUsername(req.params.id);
       console.log('userController getOne() says: req.body = ', req.body);
       next();
     }

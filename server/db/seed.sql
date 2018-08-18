@@ -3,12 +3,12 @@
 DROP TABLE IF EXISTS users CASCADE;
 
 CREATE TABLE users(
-   id     SERIAL PRIMARY KEY NOT NULL
-  ,name   VARCHAR(50) NOT NULL
-  ,username VARCHAR(50) NOT NULL
-  ,email  VARCHAR(50) NOT NULL
-  ,password VARCHAR(100) NOT NULL
-  ,avatar_url VARCHAR(255)
+   id     SERIAL PRIMARY KEY NOT NULL,
+   name   VARCHAR(50) NOT NULL,
+   username VARCHAR(50) NOT NULL,
+   email  VARCHAR(50) NOT NULL,
+   password VARCHAR(100) NOT NULL,
+   avatar_url VARCHAR(255)
 );
 
 INSERT INTO users(name,username,email,password,avatar_url) VALUES

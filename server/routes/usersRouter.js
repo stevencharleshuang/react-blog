@@ -11,6 +11,9 @@ const usersResponseController = require('../controllers/usersResponseController'
 usersRouter.route('/')
   .get(usersController.getAll, usersResponseController.sendJSON)
 
+usersRouter.route('/:id')
+  .get(usersController.getByUsername, usersResponseController.sendJSON)
+
 function sendError(err, req, res, next) {
   console.log('I am error');
   res.sendStatus(500);

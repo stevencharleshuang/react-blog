@@ -17,7 +17,7 @@ module.exports =  {
       `, id);
     },
 
-    findOne(username) {
+    findByUsername(username) {
       return db.one(`
         SELECT *
           FROM users
