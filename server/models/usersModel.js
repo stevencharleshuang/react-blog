@@ -26,10 +26,10 @@ module.exports =  {
     },
 
     save(user) {
-      console.log('userDB says: save(user) = ', user);
+      console.log('usersModel says: save(user) = ', user);
       return db.one(`
         INSERT INTO users (
-                    name
+                    name,
                     username,
                     email,
                     password,
@@ -40,7 +40,7 @@ module.exports =  {
                     $/username/,
                     $/email/,
                     $/password/,
-                    $/avatar_url
+                    $/avatar_url/
                     )
           RETURNING *
       `, user);
