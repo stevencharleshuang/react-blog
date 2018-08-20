@@ -17,6 +17,7 @@ usersRouter.route('/:username')
 
 usersRouter.route('/user/:id')
   .get(usersController.getByID, usersResponseController.sendJSON)
+  .delete(usersController.removeUser, usersResponseController.handleDelete)
 
 function sendError(err, req, res, next) {
   console.log('I am error');

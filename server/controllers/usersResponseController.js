@@ -16,6 +16,10 @@ module.exports = {
     res.status(201).end();
   },
 
+  handleDelete(req, res) {
+    console.log(`user id: ${req.params.id} deleted`);
+  },
+
   send404(err, req, res, next) {
     console.log(err);
     res.status(404).send(`I'm afraid I can't do that, Dave.`);

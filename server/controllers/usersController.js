@@ -48,4 +48,15 @@ module.exports = {
       next(err);
     }
   },
+
+  async removeUser(req, res, next) {
+    try {
+      console.log('usersController removeUser() says: req.params.id = ', req.params.id)
+      res.locals.user = await usersModel.deleteUser(req.params.id);
+      next();
+    }
+    catch(err) {
+      next(err);
+    }
+  }
 }
