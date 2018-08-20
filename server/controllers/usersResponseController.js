@@ -10,6 +10,10 @@ module.exports = {
     res.json(res.locals.users || res.locals.user);
   },
 
+  handleGetUsers(req, res) {
+    res.status(200).redirect('./')
+  },
+
   handleCreateUser(req, res) {
     console.log('userResponseHandler: handleCreate() = ', req.body);
     res.status(201).redirect('./');

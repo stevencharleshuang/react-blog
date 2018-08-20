@@ -18,7 +18,7 @@ usersRouter.route('/:username')
 
 usersRouter.route('/user/:id')
   .get(usersController.getByID, usersResponseController.sendJSON)
-  .put(usersController.editUser, usersResponseController.sendJSON)
+  .put(usersController.editUser, usersResponseController.handleGetUsers)
   .delete(usersController.removeUserByID, usersResponseController.handleDeleteByID)
 
 function sendError(err, req, res, next) {
