@@ -13,11 +13,12 @@ module.exports = {
   handleCreate(req, res) {
     console.log('userResponseHandler: handleCreate() = ', req.body);
     // res.redirect('/auth/users/');
-    res.status(201).end();
+    res.status(201).redirect('../').end();
   },
 
   handleDelete(req, res) {
     console.log(`user id: ${req.params.id} deleted`);
+    res.status(200).redirect('../');
   },
 
   send404(err, req, res, next) {
