@@ -14,10 +14,11 @@ usersRouter.route('/')
 
 usersRouter.route('/:username')
   .get(usersController.getByUsername, usersResponseController.sendJSON)
+  .delete(usersController.removeUserByUsername, usersResponseController.handleDeleteByUsername)
 
 usersRouter.route('/user/:id')
   .get(usersController.getByID, usersResponseController.sendJSON)
-  .delete(usersController.removeUser, usersResponseController.handleDelete)
+  .delete(usersController.removeUserByID, usersResponseController.handleDeleteByID)
 
 function sendError(err, req, res, next) {
   console.log('I am error');

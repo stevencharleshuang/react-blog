@@ -49,14 +49,26 @@ module.exports = {
     }
   },
 
-  async removeUser(req, res, next) {
+  async removeUserByID(req, res, next) {
     try {
       console.log('usersController removeUser() says: req.params.id = ', req.params.id)
-      res.locals.user = await usersModel.deleteUser(req.params.id);
+      res.locals.user = await usersModel.deleteUserByID(req.params.id);
       next();
     }
     catch(err) {
       next(err);
     }
-  }
+  },
+
+  async removeUserByUsername(req, res, next) {
+    try {
+      console.log('usersController removeUser() says: req.params.id = ', req.params.username)
+      res.locals.user = await usersModel.deleteUserByUsername(req.params.username);
+      next();
+    }
+    catch(err) {
+      next(err);
+    }
+  },
+
 }

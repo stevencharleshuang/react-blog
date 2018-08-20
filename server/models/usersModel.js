@@ -47,11 +47,18 @@ module.exports =  {
     console.log('userDB save(user) says: server-dive sucessful!');
     },
 
-  deleteUser(user) {
+  deleteUserByID(id) {
     return db.none(`
       DELETE FROM users
             WHERE id = $1;
-    `, user)
+    `, id)
+  },
+
+  deleteUserByUsername(username) {
+    return db.none(`
+      DELETE FROM users
+            WHERE username = $1;
+    `, username)
   },
 
 };

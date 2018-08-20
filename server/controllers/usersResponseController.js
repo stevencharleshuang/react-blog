@@ -16,9 +16,14 @@ module.exports = {
     res.status(201).redirect('../').end();
   },
 
-  handleDelete(req, res) {
+  handleDeleteByID(req, res) {
     console.log(`user id: ${req.params.id} deleted`);
     res.status(200).redirect('../');
+  },
+
+  handleDeleteByUsername(req, res) {
+    console.log(`user id: ${req.params.username} deleted`);
+    res.status(200).redirect('./');
   },
 
   send404(err, req, res, next) {
