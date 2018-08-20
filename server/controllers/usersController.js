@@ -36,11 +36,24 @@ module.exports = {
     }
   },
 
-  async register(req, res, next) {
+  async registerUser(req, res, next) {
     try {
-      console.log('userController register() says: req.body = ', req.body);
+      console.log('userController registerUser() says: req.body = ', req.body);
       req.body.password = bcrypt.hashSync(req.body.password, 10);
-      res.locals.user = await usersModel.save(req.body);
+      res.locals.user = await usersModel.createUser(req.body);
+      console.log('userController says: res.locals.user = ', res.locals.user);
+      next();
+    }
+    catch (err) {
+      next(err);
+    }
+  },
+
+  async editUser(req, res, next) {
+    try {
+      console.log('userController editUser() says: req.body = ', req.body);
+      req.body.password = bcrypt.hashSync(req.body.password, 10);
+      res.locals.user = await usersModel.updateUser(req.body, req.params.id);
       console.log('userController says: res.locals.user = ', res.locals.user);
       next();
     }
@@ -62,7 +75,7 @@ module.exports = {
 
   async removeUserByUsername(req, res, next) {
     try {
-      console.log('usersController removeUser() says: req.params.id = ', req.params.username)
+      console.log('usersController removeUser() says: req.params.username = ', req.params.username)
       res.locals.user = await usersModel.deleteUserByUsername(req.params.username);
       next();
     }

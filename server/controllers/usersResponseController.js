@@ -10,10 +10,9 @@ module.exports = {
     res.json(res.locals.users || res.locals.user);
   },
 
-  handleCreate(req, res) {
+  handleCreateUser(req, res) {
     console.log('userResponseHandler: handleCreate() = ', req.body);
-    // res.redirect('/auth/users/');
-    res.status(201).redirect('../').end();
+    res.status(201).redirect('./');
   },
 
   handleDeleteByID(req, res) {
@@ -30,4 +29,5 @@ module.exports = {
     console.log(err);
     res.status(404).send(`I'm afraid I can't do that, Dave.`);
   },
+
 };
