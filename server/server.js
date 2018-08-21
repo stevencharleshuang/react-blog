@@ -1,4 +1,5 @@
 const express     = require('express');
+const jwt         = require('jsonwebtoken');
 const logger      = require('morgan');
 const bodyParser  = require('body-parser');
 const app         = express();
@@ -7,9 +8,48 @@ const usersRouter = require('./routes/usersRouter');
 
 app.use(logger('dev'));
 
-app.get('/api/hello', (req, res) => {
-  res.send({ express: 'Hello From Express, Dave' });
+app.get('/api/hello', verifyToken, (req, res) => {
+  jwt.verify(req.token, 'secretshhhh', (err, authData) => {
+    if(err) {
+      res.sendStatus(403);
+    } else {
+    res.send({ express: 'Hello From Authenticated Express, Dave' });
+    }
+  });
 });
+
+app.post('/api/login', (req, res) => {
+  const user = {
+    id: 1,
+    username: 'brad',
+    email: 'brad@gmail.com'
+  }
+
+  jwt.sign({ user }, 'secretshhhh', (err, token) => {
+    res.json({
+      token
+    })
+  });
+});
+
+//Verify Token
+function verifyToken(req, res, next) {
+  // Get auth header value
+  const bearerHeader = req.headers['authorization'];
+  // Check if bearer is undefined
+  if (typeof bearerHeader !== 'undefined') {
+  // Split at the space
+  const bearer = bearerHeader.split(' ');
+  // Get token from array
+  const bearerToken = bearer[1];
+  // Set the token
+  req.token = bearerToken;
+  next();
+  } else {
+    // Forbidden
+    res.sendStatus(403);
+  }
+}
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
