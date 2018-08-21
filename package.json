@@ -7,15 +7,18 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "client": "cd client && yarn start",
     "server": "nodemon server.js",
-    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+    "seed": "psql -f server/db/schema.sql && psql -f server/db/seed.sql"
   },
   "keywords": [],
   "author": "Steven Charles Huang",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^3.0.0",
+    "body-parser": "^1.18.3",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
+    "faker": "^4.1.0",
     "jsonwebtoken": "^8.3.0",
     "pg-promise": "^8.4.5"
   },

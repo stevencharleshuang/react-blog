@@ -1,7 +1,8 @@
-const express = require('express');
-const app     = express();
-const PORT    = process.env.PORT || 5000;
-const logger  = require('morgan');
+const express     = require('express');
+const logger      = require('morgan');
+const bodyParser  = require('body-parser');
+const app         = express();
+const PORT        = process.env.PORT || 5000;
 const usersRouter = require('./routes/usersRouter');
 
 app.use(logger('dev'));
@@ -9,6 +10,9 @@ app.use(logger('dev'));
 app.get('/api/hello', (req, res) => {
   res.send({ express: 'Hello From Express, Dave' });
 });
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 app.use('/api/users', usersRouter),
 
