@@ -48,7 +48,7 @@ module.exports =  {
   },
 
   updateUser(user, id) {
-    console.log(`reached models, args = user: ${user} id: ${id}`);
+    console.log(`reached models, args = user: ${user.name} id: ${id}`);
     return db.one(`
          UPDATE users
             SET name       = $/name/,
@@ -58,13 +58,7 @@ module.exports =  {
                 avatar_url = $/avatar_url/
           WHERE id = ${id}
       RETURNING *;
-    `, {
-      name: user.name,
-      username: user.username,
-      email: user.email,
-      password: user.password,
-      avatar_url: user.avatar_url
-    }, id);
+    `, user, id);
   },
 
   deleteUserByID(id) {

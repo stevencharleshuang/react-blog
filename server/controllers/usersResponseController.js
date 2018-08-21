@@ -19,6 +19,10 @@ module.exports = {
     res.status(201).redirect('./');
   },
 
+  handleEditByID(req, res) {
+    res.status(200).redirect(`./${req.params.id}`);
+  },
+
   handleDeleteByID(req, res) {
     console.log(`user id: ${req.params.id} deleted`);
     res.status(200).redirect('../');
