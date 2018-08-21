@@ -13,7 +13,11 @@ app.get('/api/hello', verifyToken, (req, res) => {
     if(err) {
       res.sendStatus(403);
     } else {
-    res.send({ express: 'Hello From Authenticated Express, Dave' });
+    res.send({
+      express: 'Hello From Authenticated Express, Dave',
+      token: req.token,
+      authData
+    });
     }
   });
 });
@@ -25,10 +29,12 @@ app.post('/api/login', (req, res) => {
     email: 'brad@gmail.com'
   }
 
-  jwt.sign({ user }, 'secretshhhh', (err, token) => {
-    res.json({
-      token
-    })
+  jwt.sign(
+    { user },
+    'secretshhhh',
+    { expiresIn: '30m' },
+    (err, token) => {
+      res.json({ token })
   });
 });
 
