@@ -5,6 +5,7 @@ const bodyParser  = require('body-parser');
 const app         = express();
 const PORT        = process.env.PORT || 5000;
 const usersRouter = require('./routes/usersRouter');
+const authRouter  = require('./services/authRouter');
 
 app.use(logger('dev'));
 
@@ -60,7 +61,9 @@ function verifyToken(req, res, next) {
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use('/api/users', usersRouter),
+app.use('/api/users', usersRouter);
+
+app.use('/api/auth', authRouter);
 
 app.use('*', (err, req, res, next) => {
   res.status(400).json({
