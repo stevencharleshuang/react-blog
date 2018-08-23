@@ -47,9 +47,9 @@ module.exports = {
       })
       // Set res.locals.token to the token for access on the front end
       res.locals.token = token;
-      return token
       console.log('token: ', token);
       console.log('res.locals.token: ', res.locals.token);
+      // return token
       next();
     } else {
     return false;

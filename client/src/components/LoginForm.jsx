@@ -12,7 +12,7 @@ export default class LoginForm extends React.Component {
     }
     this.handleUsername = this.handleUsername.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    this.handleClick    = this.handleClick.bind(this);
   }
 
   handleUsername(e) {
@@ -33,19 +33,22 @@ export default class LoginForm extends React.Component {
     this.handleSubmit(this.state)
   }
 
-  async handleSubmit(formData) {
+  handleSubmit(formData) {
     const url = 'http://localhost:5000/api/auth/login'
-    try {
-      console.log('form submitted, formData: ', formData);
-      const token = await axios.post(url, formData);
-      console.log('token: ', token);
-      this.setState({
-        token,
+    fetch(url, {
+      method: 'POST',
+      body: JSON.stringify(formData),
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+        Accept: 'application/json'
+      }
+    })
+      .then(res => res.json())
+      .then(response => {
+        console.log('Success:', (response))
+        TokenService.save(response.token)
       })
-      TokenService.save(token);
-    } catch (e) {
-
-    }
+      .catch(error => console.error('Error:', error));
   }
 
   render() {
@@ -53,9 +56,21 @@ export default class LoginForm extends React.Component {
     return (
     <div className="login-form">
       <form>
-        <input type="text" id="username" name="username" placeholder="Username" onChange={this.handleUsername} />
+        <input
+          type="text"
+          id="username"
+          name="username"
+          placeholder="Username"
+          onChange={this.handleUsername}
+        />
         <br />
-        <input type="text" id="password" name="password" placeholder="Password" onChange={this.handlePassword} />
+        <input
+          type="text"
+          id="password"
+          name="password"
+          placeholder="Password"
+          onChange={this.handlePassword}
+        />
         <br />
         <button onClick={this.handleClick}>Login</button>
       </form>

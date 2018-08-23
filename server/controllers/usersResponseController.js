@@ -41,7 +41,8 @@ module.exports = {
   },
 
   handleLogin(req, res) {
-    res.status(201).redirect('./');
+    console.log('hit handleLogin', res.locals.token)
+    res.json({ token: res.locals.token });
   },
 
   send404(err, req, res, next) {

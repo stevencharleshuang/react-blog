@@ -20,16 +20,16 @@ app.use('*', (err, req, res, next) => {
   res.status(400).json({
     error: err,
     message: err.message
-  })
-})
+  });
+});
 
 app.use((err, req, res, next) => {
   console.log(err)
   res.status(500).json({
     error: err,
     message: err.message
-  })
-})
+  });
+});
 
 app.listen(PORT, () => {
   console.log(`Server up and running! Port: ${PORT} Env: ${app.get('env')}`);
