@@ -24,30 +24,17 @@ module.exports = {
     }
   },
 
-  // Once Auth is implemented, we will switch to this func
+
   async getByUsername(req, res, next) {
     try {
+      // console.log('userController getOne() says: req.params.username = ', req.params.username);
       res.locals.user = await usersModel.findByUsername(req.params.username);
-      // console.log('userController getOne() says: req.body = ', req.body);
       next();
     }
     catch (err) {
       next(err);
     }
   },
-
-  // // Once Auth is implemented, we will switch to this func
-  // async getByLoginUsername(err, req, res, next, username) {
-  //   try {
-  //     console.log('hit usersController getByLoginUsername. username: ', username);
-  //     res.locals.user = await usersModel.findByUsername(username);
-  //     console.log('userController getOne() says: res.locals.user = ', res.locals.user);
-  //     next();
-  //   }
-  //   catch (err) {
-  //     next(err);
-  //   }
-  // },
 
   async registerUser(req, res, next) {
     try {
