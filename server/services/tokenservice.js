@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 module.exports = {
 
   makeToken(payload) {
-    console.log(payload);
+    console.log('tokenService payload: ', payload);
     return jwt.sign(
       { payload },
       'secretshhhh',

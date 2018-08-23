@@ -16,20 +16,26 @@ const isValidUser = async ({ username, password }) => {
 
 module.exports = {
   authenticate(req, res, next) {
+    let username;
     console.log('req.body: ', req.body);
-    if (!isValidUser(req.body)) {
-      return next({});
-    }
-    tokenService.makeToken({
-      username: req.body.username,
-    })
-      .then((token) => {
-        res.locals.token = token;
-        console.log('auth/AuthService: authenticate() post-makeToken(token) = ', res.locals.token);
-        next();
+    if (!!isValidUser(req.body)) {
+      username = req.body.username;
+      console.log('back in authenticate, username: ', username);
+      // next({});
+      const token = tokenService.makeToken({
+        username,
       })
-      .catch(next);
+      console.log('token: ', token);
+    } else {
+
+      // .then((token) => {
+      //   res.locals.token = token;
+      //   console.log('auth/AuthService: authenticate() post-makeToken(token) = ', res.locals.token);
+      //   next();
+      // })
+      // .catch(next);
     return false;
+    }
   },
 
   error(err, req, res, next) {
