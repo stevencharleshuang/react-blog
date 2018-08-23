@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import LoginForm from './components/LoginForm';
 import './App.css';
+
 
 class App extends Component {
   constructor(props) {
@@ -27,6 +29,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Welcome to React Blog, Dave</h1>
+        <LoginForm />
       </div>
     );
   }
