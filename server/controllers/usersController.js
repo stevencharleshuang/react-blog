@@ -1,5 +1,5 @@
 const usersModel = require('../models/usersModel');
-const bcrypt = require('bcrypt');
+const bcrypt     = require('bcrypt');
 
 module.exports = {
 
@@ -36,12 +36,25 @@ module.exports = {
     }
   },
 
+  // // Once Auth is implemented, we will switch to this func
+  // async getByLoginUsername(err, req, res, next, username) {
+  //   try {
+  //     console.log('hit usersController getByLoginUsername. username: ', username);
+  //     res.locals.user = await usersModel.findByUsername(username);
+  //     console.log('userController getOne() says: res.locals.user = ', res.locals.user);
+  //     next();
+  //   }
+  //   catch (err) {
+  //     next(err);
+  //   }
+  // },
+
   async registerUser(req, res, next) {
     try {
-      console.log('userController registerUser() says: req.body = ', req.body);
+      // console.log('userController registerUser() says: req.body = ', req.body);
       req.body.password = bcrypt.hashSync(req.body.password, 10);
       res.locals.user = await usersModel.createUser(req.body);
-      console.log('userController says: res.locals.user = ', res.locals.user);
+      // console.log('userController says: res.locals.user = ', res.locals.user);
       next();
     }
     catch (err) {

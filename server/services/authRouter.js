@@ -7,4 +7,7 @@ authRouter.get('/', (req, res) => {
   res.send({ message: 'Hello Dave, from authRouter'})
 });
 
+authRouter.route('/login')
+  .post(authService.authenticate)
+
 module.exports = authRouter;

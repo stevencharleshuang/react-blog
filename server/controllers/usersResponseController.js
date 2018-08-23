@@ -33,6 +33,10 @@ module.exports = {
     res.status(200).redirect('./');
   },
 
+  handleLogin(req, res) {
+    res.status(201).redirect('./');
+  },
+
   send404(err, req, res, next) {
     console.log(err);
     res.status(404).send(`I'm afraid I can't do that, Dave.`);
