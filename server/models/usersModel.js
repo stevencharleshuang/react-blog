@@ -18,10 +18,11 @@ module.exports =  {
   },
 
   findByUsername(username) {
+    console.log('hit usersModel findByUsername()')
     return db.one(`
-      SELECT *
-        FROM users
-       WHERE username = $1;
+          SELECT *
+            FROM users
+           WHERE username = $1
     `, username);
   },
 

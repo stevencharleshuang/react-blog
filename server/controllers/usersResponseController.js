@@ -10,6 +10,10 @@ module.exports = {
     res.json(res.locals.users || res.locals.user);
   },
 
+  handleAuthTest(req, res) {
+    res.send({ message: 'Hello, Dave. You are authorized' });
+  },
+
   handleGetUsers(req, res) {
     res.status(200).redirect('./')
   },
@@ -31,6 +35,10 @@ module.exports = {
   handleDeleteByUsername(req, res) {
     console.log(`user id: ${req.params.username} deleted`);
     res.status(200).redirect('./');
+  },
+
+  handleLogin(req, res) {
+    res.status(201).redirect('./');
   },
 
   send404(err, req, res, next) {
