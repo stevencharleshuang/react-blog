@@ -31,11 +31,18 @@ export default class LoginForm extends React.Component {
   }
 
   handleSubmit(formData) {
-    console.log('form submitted, formData: ', formData)
+    console.log('form submitted, formData: ', formData);
+    const url = 'http://localhost:5000/api/auth/login'
+    fetch(url, {
+      method: 'POST',
+      mode: 'cors',
+      body: JSON.stringify(formData),
+    })
+    .then(response => response.json());
   }
 
   render() {
-    console.log('state: ', this.state)
+    // console.log('state: ', this.state)
     return (
     <div className="login-form">
       <form>
