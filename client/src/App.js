@@ -12,17 +12,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:5000/api/hello')
-    .then((data) => {
-      let resdata = JSON.stringify(data);
-      console.log('data: ', resdata);
-    })
-    .then((parsedData) => {
-      this.setState({
-        data: parsedData,
-      });
-      console.log('CompyDidMounty: ', this.state.data);
-    })
+
   }
 
   render() {

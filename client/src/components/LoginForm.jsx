@@ -1,12 +1,14 @@
 import React from 'react';
 import axios from 'axios';
+import TokenService from '../services/TokenService';
 
 export default class LoginForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      token: undefined,
     }
     this.handleUsername = this.handleUsername.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
@@ -35,14 +37,19 @@ export default class LoginForm extends React.Component {
     const url = 'http://localhost:5000/api/auth/login'
     try {
       console.log('form submitted, formData: ', formData);
-      const { data: { token } } = await axios.post(url, formData);
+      const token = await axios.post(url, formData);
+      console.log('token: ', token);
+      this.setState({
+        token,
+      })
+      TokenService.save(token);
     } catch (e) {
 
     }
   }
 
   render() {
-    // console.log('state: ', this.state)
+    console.log('state: ', this.state)
     return (
     <div className="login-form">
       <form>
