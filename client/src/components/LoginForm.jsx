@@ -27,6 +27,11 @@ export default class LoginForm extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
+    this.handleSubmit(this.state)
+  }
+
+  handleSubmit(formData) {
+    console.log('form submitted, formData: ', formData)
   }
 
   render() {
