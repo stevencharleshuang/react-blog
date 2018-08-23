@@ -11,7 +11,10 @@ module.exports = {
   },
 
   handleAuthTest(req, res) {
-    res.send({ message: 'Hello, Dave. You are authorized' });
+    res.send({
+      express: 'Hello From Authenticated Express, Dave',
+      token: req.token,
+    });
   },
 
   handleGetUsers(req, res) {
