@@ -14,7 +14,7 @@ module.exports = {
       { payload },
       process.env.SERVER_SECRET,
       {
-        expiresIn: '30m',
+        expiresIn: '1h',
         issuer: 'Hal 9000'
       });
   },

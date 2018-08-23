@@ -15,6 +15,6 @@ authRouter.route('/authtest')
   .get(tokenService.verifyToken, usersResponseController.handleAuthTest)
 
 authRouter.route('/login')
-  .post(authService.authenticate)
+  .post(authService.authenticate, usersResponseController.handleLogin)
 
 module.exports = authRouter;
