@@ -10,6 +10,10 @@ module.exports = {
     res.json(res.locals.users || res.locals.user);
   },
 
+  handleAuthTest(req, res) {
+    res.send({ message: 'Hello, Dave. You are authorized' });
+  },
+
   handleGetUsers(req, res) {
     res.status(200).redirect('./')
   },

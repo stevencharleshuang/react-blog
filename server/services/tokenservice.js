@@ -6,7 +6,7 @@ module.exports = {
     console.log('tokenService payload: ', payload);
     return jwt.sign(
       { payload },
-      'secretshhhh',
+      process.env.SERVER_SECRET,
       {
         expiresIn: '30m',
         issuer: 'Hal 9000'

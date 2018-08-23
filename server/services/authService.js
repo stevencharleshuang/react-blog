@@ -25,7 +25,10 @@ module.exports = {
       const token = tokenService.makeToken({
         username,
       })
+      res.locals.token = token;
       console.log('token: ', token);
+      console.log('res.locals.token: ', res.locals.token);
+      next();
     } else {
 
       // .then((token) => {
@@ -36,6 +39,7 @@ module.exports = {
       // .catch(next);
     return false;
     }
+    next();
   },
 
   error(err, req, res, next) {

@@ -11,7 +11,7 @@ const authRouter  = require('./services/authRouter');
 app.use(logger('dev'));
 
 app.get('/api/hello', (req, res) => {
-  jwt.verify(req.token, 'secretshhhh', (err, authData) => {
+  jwt.verify(req.token, process.env.SERVER_SECRET, (err, authData) => {
     if(err) {
       res.sendStatus(403);
     } else {
