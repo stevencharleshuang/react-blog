@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 export default class LoginForm extends React.Component {
   constructor(props) {
@@ -30,15 +31,14 @@ export default class LoginForm extends React.Component {
     this.handleSubmit(this.state)
   }
 
-  handleSubmit(formData) {
-    console.log('form submitted, formData: ', formData);
+  async handleSubmit(formData) {
     const url = 'http://localhost:5000/api/auth/login'
-    fetch(url, {
-      method: 'POST',
-      mode: 'cors',
-      body: JSON.stringify(formData),
-    })
-    .then(response => response.json());
+    try {
+      console.log('form submitted, formData: ', formData);
+      const { data: { token } } = await axios.post(url, formData);
+    } catch (e) {
+
+    }
   }
 
   render() {

@@ -10,20 +10,6 @@ const authRouter  = require('./services/authRouter');
 
 app.use(logger('dev'));
 
-app.get('/api/hello', (req, res) => {
-  jwt.verify(req.token, process.env.SERVER_SECRET, (err, authData) => {
-    if(err) {
-      res.sendStatus(403);
-    } else {
-    res.send({
-      express: 'Hello From Authenticated Express, Dave',
-      token: req.token,
-      authData
-    });
-    }
-  });
-});
-
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
