@@ -41,7 +41,7 @@ module.exports = {
   },
 
   handleLogin(req, res) {
-    console.log('hit handleLogin', res.locals.token)
+    // console.log('hit handleLogin', res.locals.token)
     res.json({ token: res.locals.token });
   },
 
