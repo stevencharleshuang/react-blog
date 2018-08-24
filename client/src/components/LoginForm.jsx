@@ -24,18 +24,18 @@ export default class LoginForm extends React.Component {
 
   handleLogIn(e) {
     e.preventDefault();
-    this.handleSubmit(this.state)
+    this.handleSubmit(this.state);
   }
 
   handleLogOut(e) {
     e.preventDefault();
-    console.log(e.target.data)
+    console.log(e.target.data);
     TokenService.destroy();
-    this.setState({ authenticated: false })
+    this.setState({ authenticated: false });
   }
 
   handleSubmit(formData) {
-    const url = 'http://localhost:5000/api/auth/login'
+    const url = 'http://localhost:5000/api/auth/login';
     fetch(url, {
       method: 'POST',
       body: JSON.stringify(formData),

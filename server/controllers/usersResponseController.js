@@ -23,7 +23,7 @@ module.exports = {
 
   handleCreateUser(req, res) {
     console.log('userResponseHandler: handleCreate() = ', req.body);
-    res.status(201).redirect('./');
+    res.json({ message: 'Registration Successful!' });
   },
 
   handleEditByID(req, res) {
