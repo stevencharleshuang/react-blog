@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import TokenService from '../services/TokenService';
 
 export default class LoginForm extends React.Component {
@@ -10,23 +9,17 @@ export default class LoginForm extends React.Component {
       password: '',
       authenticated: this.props.authenticated
     }
-    this.handleUsername = this.handleUsername.bind(this);
-    this.handlePassword = this.handlePassword.bind(this);
+    this.handleOnChange = this.handleOnChange.bind(this);
     this.handleLogIn    = this.handleLogIn.bind(this);
     this.handleLogOut   = this.handleLogOut.bind(this);
   }
 
-  handleUsername(e) {
-    // console.log(e.target.value);
+  handleOnChange(e) {
+    const value = e.target.value
+    const name = e.target.name;
     this.setState({
-      username: e.target.value
-    });
-  }
-
-  handlePassword(e) {
-    this.setState({
-      password: e.target.value
-    });
+      [name]: value
+    })
   }
 
   handleLogIn(e) {
@@ -36,7 +29,9 @@ export default class LoginForm extends React.Component {
 
   handleLogOut(e) {
     e.preventDefault();
+    console.log(e.target.data)
     TokenService.destroy();
+    this.setState({ authenticated: false })
   }
 
   handleSubmit(formData) {
@@ -59,7 +54,7 @@ export default class LoginForm extends React.Component {
   }
 
   render() {
-    // console.log('state: ', this.state)
+    console.log('state: ', this.state)
     return (
     <div className="login-form">
       <span>Authenticated: {this.state.authenticated ? 'True' : 'False'}</span>
@@ -70,7 +65,7 @@ export default class LoginForm extends React.Component {
           id="username"
           name="username"
           placeholder="Username"
-          onChange={this.handleUsername}
+          onChange={this.handleOnChange}
         />
         <br />
         <input
@@ -78,11 +73,14 @@ export default class LoginForm extends React.Component {
           id="password"
           name="password"
           placeholder="Password"
-          onChange={this.handlePassword}
+          onChange={this.handleOnChange}
         />
         <br />
-        <button onClick={this.handleLogIn} data-id="login">Log In</button>
-        <button onClick={this.handleLogOut} data-id="logout">Log Out</button>
+        {
+        this.state.authenticated
+        ? <button onClick={this.handleLogOut} data-id="logout">Log Out</button>
+        : <button onClick={this.handleLogIn} data-id="login">Log In</button>
+        }
       </form>
     </div>
     );
