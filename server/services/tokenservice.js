@@ -7,7 +7,7 @@ module.exports = {
 
   // Make a token
   makeToken(payload) {
-    console.log('tokenService payload: ', payload);
+    console.log('tokenService payload: ', payload, 'timestamp:', Date.now());
     // Return the token formatted with following parameters
     return jwt.sign(
       // Current payload accepts username, refactor with roles
