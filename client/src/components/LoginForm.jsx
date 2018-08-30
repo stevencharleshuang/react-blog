@@ -7,6 +7,7 @@ export default class LoginForm extends React.Component {
     this.state = {
       username: '',
       password: '',
+      loggedInUser: '',
       authenticated: this.props.authenticated
     }
     this.handleOnChange = this.handleOnChange.bind(this);
@@ -48,7 +49,7 @@ export default class LoginForm extends React.Component {
       .then(response => {
         console.log('Success:', (response))
         TokenService.save(response.token);
-        this.setState({ authenticated: true })
+        this.setState({ authenticated: true, loggedInUser: response.user })
       })
       .catch(error => console.error('Error:', error));
   }

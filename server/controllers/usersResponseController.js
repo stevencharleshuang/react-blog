@@ -43,7 +43,7 @@ module.exports = {
 
   handleLogin(req, res) {
     // console.log('hit handleLogin', res.locals.token)
-    res.json({ token: res.locals.token });
+    res.json({ token: res.locals.token, user: res.locals.user });
   },
 
   send404(err, req, res, next) {
