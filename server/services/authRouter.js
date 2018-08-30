@@ -7,9 +7,9 @@ const usersResponseController = require('../controllers/usersResponseController'
 const authService             = require('./authService');
 const tokenService            = require('./tokenService');
 
-authRouter.get('/', (req, res) => {
-  res.send({ message: 'Hello, Dave, from authRouter'})
-});
+// authRouter.get('/', (req, res) => {
+//   res.send({ message: 'Hello, Dave, from authRouter'})
+// });
 
 authRouter.route('/authtest')
   .get(tokenService.verifyToken, usersResponseController.handleAuthTest)

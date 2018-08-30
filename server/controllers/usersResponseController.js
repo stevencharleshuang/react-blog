@@ -10,9 +10,6 @@ module.exports = {
     res.json(res.locals.users || res.locals.user);
   },
 
-  handleAuthTest(req, res) {
-    res.send({ message: 'Hello, Dave. You are authorized' });
-  },
 
   handleGetUsers(req, res) {
     res.status(200).redirect('./')
@@ -20,7 +17,7 @@ module.exports = {
 
   handleCreateUser(req, res) {
     console.log('userResponseHandler: handleCreate() = ', req.body);
-    res.status(201).redirect('./');
+    res.json({ message: 'Registration Successful!' });
   },
 
   handleEditByID(req, res) {
@@ -37,8 +34,16 @@ module.exports = {
     res.status(200).redirect('./');
   },
 
+  handleAuthTest(req, res) {
+    res.send({
+      express: 'Hello From Authenticated Express, Dave',
+      token: req.token,
+    });
+  },
+
   handleLogin(req, res) {
-    res.status(201).redirect('./');
+    // console.log('hit handleLogin', res.locals.token)
+    res.json({ token: res.locals.token, user: res.locals.user });
   },
 
   send404(err, req, res, next) {
