@@ -1,4 +1,4 @@
-const usersModel = require('../models/entriesModel');
+const usersModel = require('../models/usersModel');
 const bcrypt     = require('bcrypt');
 
 module.exports = {
@@ -23,7 +23,6 @@ module.exports = {
       next(err);
     }
   },
-
 
   async getByUsername(req, res, next) {
     try {

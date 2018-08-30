@@ -10,7 +10,6 @@ module.exports = {
     res.json(res.locals.entries || res.locals.entry);
   },
 
-
   handleGetEntries(req, res) {
     res.status(200).redirect('./')
   },
