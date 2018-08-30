@@ -22,6 +22,16 @@ module.exports = {
     }
   },
 
+  async getEntriesByUserID(req, res, next) {
+    try {
+      console.log('entriesController hit', req.params.id)
+      res.locals.entries = await entriesModel.findEntriesByUserID(req.params.userID);
+      next();
+    } catch(err) {
+      next(err);
+    }
+  },
+
   async makeEntry(req, res, next) {
     try {
       res.locals.entry = await entriesModel.createEntry(req.body);

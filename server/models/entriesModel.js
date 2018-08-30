@@ -17,6 +17,15 @@ module.exports =  {
     `, id);
   },
 
+  findEntriesByUserID(id) {
+    console.log('entriesModel triggered!', id)
+    return db.many(`
+      SELECT *
+        FROM entries
+       WHERE user_id = $1;
+    `, id);
+  },
+
   createEntry(entry) {
     console.log('entriesModel says: save(entry) = ', entry);
     return db.one(`
