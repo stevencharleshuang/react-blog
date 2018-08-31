@@ -9,7 +9,7 @@ module.exports = {
       next();
     }
     catch (err) {
-      next(err);
+      next(err);  
     }
   },
 
@@ -23,7 +23,6 @@ module.exports = {
       next(err);
     }
   },
-
 
   async getByUsername(req, res, next) {
     try {
