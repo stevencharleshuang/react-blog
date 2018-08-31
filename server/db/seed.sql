@@ -3,7 +3,7 @@
 DROP TABLE IF EXISTS users CASCADE;
 
 CREATE TABLE users (
-   id         SERIAL PRIMARY KEY NOT NULL,
+   id         SERIAL PRIMARY KEY,
    name       VARCHAR(50) NOT NULL,
    username   VARCHAR(50) NOT NULL,
    email      VARCHAR(50) NOT NULL,
@@ -39,7 +39,7 @@ INSERT INTO users(name,username,email,password,avatar_url) VALUES
 DROP TABLE IF EXISTS entries CASCADE;
 
 CREATE TABLE entries (
-  id           SERIAL PRIMARY KEY NOT NULL,
+  id           SERIAL,
   date_created INTEGER NOT NULL,
   location     VARCHAR(255) NOT NULL,
   title        VARCHAR (500) NOT NULL,
