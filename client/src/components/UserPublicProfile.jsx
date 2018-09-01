@@ -32,9 +32,11 @@ export default class UserPublicProfile extends React.Component {
     const userEntries = fetchedEntries.map((entry, i) => {
       return (
         <li key={i}>
-          <strong>{entry.title}</strong>
-          <br />
-          <span>{entry.date_created}</span>
+          <Link to={{ pathname: `/users/${this.props.match.params.username}/${entry.id}`, state: { entry } }}>
+            <strong>{entry.title}</strong>
+            <br />
+            <span>{entry.date_created}</span>
+          </Link>
         </li>
       );
     })
