@@ -5,6 +5,7 @@ import LoginForm                   from './components/LoginForm';
 import RegisterForm                from './components/RegisterForm';
 import Hero                        from './components/Hero';
 import UsersDirectory              from './components/UsersDirectory';
+import UserPrivateProfile          from './components/UserPrivateProfile';
 import UserPublicProfile           from './components/UserPublicProfile';
 import Entry                       from './components/Entry';
 import './App.css';
@@ -18,10 +19,6 @@ class App extends Component {
     }
   }
 
-  componentDidMount() {
-
-  }
-
   render() {
     return (
       <div className="App">
@@ -32,6 +29,7 @@ class App extends Component {
         <RegisterForm />
         <br />
         <Switch>
+          <Route path="/user/:id" component={UserPrivateProfile} />
           <Route path="/users/:username/:entry" component={Entry} />
           <Route path="/users/:username" component={UserPublicProfile} />
           <Route exact path="/users" component={UsersDirectory} />

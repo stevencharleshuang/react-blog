@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default class Hero extends React.Component {
+export default class Entry extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -9,7 +9,7 @@ export default class Hero extends React.Component {
     }
   }
   render() {
-    console.log(this.props)
+    // console.log(this.props)
     const entry = this.props.location.state.entry
     return (
       <div>
