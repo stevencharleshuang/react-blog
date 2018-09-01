@@ -6,11 +6,12 @@ const entriesResponseController = require('../controllers/entriesResponseControl
 //   res.send({ message: 'You hit the entries router, Dave' })
 // });
 
+entriesRouter.route('/users/user/:userID')
+  .get(entriesController.getEntriesByUserID, entriesResponseController.sendJSON)
+
 entriesRouter.route('/users/:username')
   .get(entriesController.getEntriesByUsername, entriesResponseController.sendJSON)
 
-entriesRouter.route('/users/:userID')
-  .get(entriesController.getEntriesByUserID, entriesResponseController.sendJSON)
 
 entriesRouter.route('/entry/:id')
   .get(entriesController.getByID, entriesResponseController.sendJSON)

@@ -48,8 +48,8 @@ export default class CreateEntryForm extends React.Component {
   }
 
   render() {
-    console.log('CreateEntryForm props: ', this.props);
-    console.log(this.state);
+    // console.log('CreateEntryForm props: ', this.props);
+    // console.log(this.state);
     return (
       <form className="create-entry-form">
         <input

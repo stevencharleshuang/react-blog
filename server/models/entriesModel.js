@@ -22,7 +22,7 @@ module.exports =  {
     return db.many(`
       SELECT *
         FROM entries
-       WHERE user_id = $1;
+       WHERE entries.user_id = $1;
     `, id);
   },
 
