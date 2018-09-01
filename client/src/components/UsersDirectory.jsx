@@ -26,9 +26,21 @@ export default class UsersDirectory extends React.Component {
   }
 
   render() {
+    const fetchedUsers = this.state.users.slice();
+    const UsersDirectory = fetchedUsers.map((user, i) => {
+      return (
+        <li key={i}>
+          <img src={user.avatar_url} />
+          <br />
+          {user.username}
+        </li>);
+    })
     return (
       <div className="users-directory">
         <h1>Hello Users Directory, Dave</h1>
+        <ul>
+          {UsersDirectory}
+        </ul>
       </div>
     );
   }
