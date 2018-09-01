@@ -16,7 +16,7 @@ module.exports = {
 
   handleCreateEntry(req, res) {
     console.log('entriesResponseHandler: handleCreate() = ', req.body);
-    res.json({ message: 'Create Entry Successful!' });
+    res.json({ entry: res.locals.entry });
   },
 
   handleEditByID(req, res) {
