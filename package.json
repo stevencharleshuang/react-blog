@@ -21,7 +21,8 @@
     "express": "^4.16.3",
     "faker": "^4.1.0",
     "jsonwebtoken": "^8.3.0",
-    "pg-promise": "^8.4.5"
+    "pg-promise": "^8.4.5",
+    "react-router-dom": "^4.3.1"
   },
   "devDependencies": {
     "concurrently": "^3.6.1",
