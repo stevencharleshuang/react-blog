@@ -18,6 +18,17 @@ export default class Entry extends React.Component {
         <span>Location: {entry.location}</span>
         <p>{entry.content}</p>
 
+        <Link to={
+          {
+            pathname:`/users/user/entry/${entry.id}`,
+            state: { entry }
+          }
+        }>
+          Edit Entry
+        </Link>
+        <br />
+        <Link to={`/`}>Delete Entry</Link>
+        <br />
         <Link to={`/users/${this.props.match.params.username}`}>Back to User Profile</Link>
       </div>
     );

@@ -8,6 +8,7 @@ import UsersDirectory              from './components/UsersDirectory';
 import UserPrivateProfile          from './components/UserPrivateProfile';
 import UserPublicProfile           from './components/UserPublicProfile';
 import Entry                       from './components/Entry';
+import EditEntryForm               from './components/EditEntryForm';
 import './App.css';
 
 
@@ -29,9 +30,10 @@ class App extends Component {
         <RegisterForm />
         <br />
         <Switch>
-          <Route path="/user/:id" component={UserPrivateProfile} />
+          <Route path="/users/user/entry/:edit" component={EditEntryForm} />
           <Route path="/users/:username/:entry" component={Entry} />
           <Route path="/users/:username" component={UserPublicProfile} />
+          <Route path="/user/:id" component={UserPrivateProfile} />
           <Route exact path="/users" component={UsersDirectory} />
           <Route exact path="/" component={Hero} />
         </Switch>

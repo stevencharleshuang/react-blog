@@ -15,7 +15,7 @@ entriesRouter.route('/users/:username')
 
 entriesRouter.route('/entry/:id')
   .get(entriesController.getByID, entriesResponseController.sendJSON)
-  .put(entriesController.editEntry, entriesResponseController.handleEditByID)
+  .put(entriesController.editEntry, entriesResponseController.sendJSON)
   .delete(entriesController.removeEntryByID, entriesResponseController.handleDeleteByID)
 
 entriesRouter.route('/')

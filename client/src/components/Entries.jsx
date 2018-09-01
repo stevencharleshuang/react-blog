@@ -33,7 +33,12 @@ export default class Entries extends React.Component {
     const userEntries = fetchedEntries.map((entry, i) => {
       return (
         <li key={i}>
-          <Link to={{ pathname: `/users/user/${entry.id}`, state: { entry } }}>
+          <Link to={
+            {
+              pathname: `/users/user/${entry.id}`,
+              state: { entry }
+            }
+          }>
             <strong>{entry.title}</strong>
             <br />
             <span>{entry.date_created}</span>
