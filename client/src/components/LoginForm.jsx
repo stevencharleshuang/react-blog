@@ -55,7 +55,7 @@ export default class LoginForm extends React.Component {
   }
 
   render() {
-    console.log('state: ', this.state)
+    // console.log('state: ', this.state)
     return (
     <div className="login-form">
       <span>Authenticated: {this.state.authenticated ? 'True' : 'False'}</span>

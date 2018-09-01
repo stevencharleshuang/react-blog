@@ -12,7 +12,7 @@ export default class UserPrivateProfile extends React.Component {
     return (
       <div className="user-private-profile">
         <h1>This is the User Private Profile, Dave</h1>
-        <CreateEntryForm />
+        <CreateEntryForm user_id={this.state.user_id} />
       </div>
     );
   }
