@@ -67,7 +67,7 @@ export default class EditEntryForm extends React.Component {
             onChange={this.handleOnChange}
           />
           <br />
-          <input
+          <textarea
             type="text"
             id="content"
             name="content"
