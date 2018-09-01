@@ -4,6 +4,7 @@ import Nav                         from './components/Nav';
 import LoginForm                   from './components/LoginForm';
 import RegisterForm                from './components/RegisterForm';
 import Hero                        from './components/Hero';
+import UserPublicProfile           from './components/UserPublicProfile';
 import UsersDirectory              from './components/UsersDirectory';
 import './App.css';
 
@@ -30,6 +31,7 @@ class App extends Component {
         <RegisterForm />
         <br />
         <Switch>
+          <Route path="/users/:username" component={UserPublicProfile} />
           <Route exact path="/users" component={UsersDirectory} />
           <Route exact path="/" component={Hero} />
         </Switch>

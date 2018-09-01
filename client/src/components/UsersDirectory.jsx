@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import UserPublicProfile from './UserPublicProfile';
 
 export default class UsersDirectory extends React.Component {
   constructor(props) {
@@ -19,7 +21,7 @@ export default class UsersDirectory extends React.Component {
     })
       .then(res => res.json())
       .then(response => {
-        console.log('Success:', (response));
+        // console.log('Success:', (response));
         this.setState({ users: response })
       })
       .catch(error => console.error('Error:', error));
@@ -30,10 +32,13 @@ export default class UsersDirectory extends React.Component {
     const UsersDirectory = fetchedUsers.map((user, i) => {
       return (
         <li key={i}>
-          <img src={user.avatar_url} />
-          <br />
-          {user.username}
-        </li>);
+          <Link to={`/users/${user.username}`}>
+            <img src={user.avatar_url} />
+            <br />
+            {user.username}
+          </Link>
+        </li>
+      );
     })
     return (
       <div className="users-directory">

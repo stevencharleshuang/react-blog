@@ -6,4 +6,4 @@ export default function Hero(props) {
       <h1>Here's the Hero, Dave</h1>
     </div>
   );
-}
+};
