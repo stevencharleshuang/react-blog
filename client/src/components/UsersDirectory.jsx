@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import UserPublicProfile from './UserPublicProfile';
 
 export default class UsersDirectory extends React.Component {
   constructor(props) {
@@ -33,7 +32,7 @@ export default class UsersDirectory extends React.Component {
       return (
         <li key={i}>
           <Link to={`/users/${user.username}`}>
-            <img src={user.avatar_url} />
+            <img src={user.avatar_url} alt={user.username} />
             <br />
             {user.username}
           </Link>

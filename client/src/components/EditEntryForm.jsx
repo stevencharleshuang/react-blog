@@ -52,8 +52,9 @@ export default class EditEntryForm extends React.Component {
     console.log('state: ', this.state);
     const entry = this.props.location.state.entry
     return(
-      <div>
-        <form className="edit-entry-form">
+      <div className="edit-entry-form">
+        <h1>Edit Entry Form</h1>
+        <form>
           <input
             type="text"
             id="location"

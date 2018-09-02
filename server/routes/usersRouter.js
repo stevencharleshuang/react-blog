@@ -4,7 +4,7 @@ const usersResponseController = require('../controllers/usersResponseController'
 
 usersRouter.route('/user/:id')
   .get(usersController.getByID, usersResponseController.sendJSON)
-  .put(usersController.editUser, usersResponseController.handleEditByID)
+  .put(usersController.editUser, usersResponseController.sendJSON)
   .delete(usersController.removeUserByID, usersResponseController.handleDeleteByID)
 
 usersRouter.route('/:username')

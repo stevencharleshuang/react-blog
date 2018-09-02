@@ -1,5 +1,5 @@
 import React, { Component }        from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Nav                         from './components/Nav';
 import LoginForm                   from './components/LoginForm';
 import RegisterForm                from './components/RegisterForm';
