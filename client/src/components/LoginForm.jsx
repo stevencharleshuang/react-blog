@@ -47,7 +47,7 @@ export default class LoginForm extends React.Component {
     })
       .then(res => res.json())
       .then(response => {
-        console.log('Success:', (response))
+        console.log('Success:', (response));
         TokenService.save(response.token);
         this.setState({ authenticated: true, loggedInUser: response.user })
       })
@@ -55,7 +55,7 @@ export default class LoginForm extends React.Component {
   }
 
   render() {
-    console.log('state: ', this.state)
+    // console.log('state: ', this.state)
     return (
     <div className="login-form">
       <span>Authenticated: {this.state.authenticated ? 'True' : 'False'}</span>

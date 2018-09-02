@@ -22,8 +22,18 @@ module.exports =  {
     return db.many(`
       SELECT *
         FROM entries
-       WHERE user_id = $1;
+       WHERE entries.user_id = $1;
     `, id);
+  },
+
+  findEntriesByUsername(username) {
+    console.log('entriesModel triggered!', username)
+    return db.many(`
+         SELECT *
+           FROM entries
+           JOIN users ON entries.user_id = users.id
+          WHERE users.username = $1
+    `, username);
   },
 
   createEntry(entry) {

@@ -16,7 +16,7 @@ module.exports = {
 
   handleCreateEntry(req, res) {
     console.log('entriesResponseHandler: handleCreate() = ', req.body);
-    res.json({ message: 'Create Entry Successful!' });
+    res.json({ entry: res.locals.entry });
   },
 
   handleEditByID(req, res) {
@@ -25,7 +25,7 @@ module.exports = {
 
   handleDeleteByID(req, res) {
     console.log(`user id: ${req.params.id} deleted`);
-    res.status(200).redirect('../');
+    res.json;
   },
 
   send404(err, req, res, next) {
