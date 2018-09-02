@@ -25,7 +25,7 @@ module.exports = {
 
   handleDeleteByID(req, res) {
     console.log(`user id: ${req.params.id} deleted`);
-    res.status(200).redirect('../');
+    res.json;
   },
 
   send404(err, req, res, next) {

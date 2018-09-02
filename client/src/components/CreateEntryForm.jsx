@@ -53,30 +53,30 @@ export default class CreateEntryForm extends React.Component {
     return (
       <form className="create-entry-form">
         <input
-            type="text"
-            id="location"
-            name="location"
-            placeholder="location"
-            onChange={this.handleOnChange}
-          />
-          <br />
-          <input
-            type="text"
-            id="title"
-            name="title"
-            placeholder="title"
-            onChange={this.handleOnChange}
-          />
-          <br />
-          <textarea
-            type="text"
-            id="content"
-            name="content"
-            placeholder="content"
-            onChange={this.handleOnChange}
-          />
-          <br />
-          <button onClick={this.handleCreateEntry} data-id="create-entry">Create Entry</button>
+          type="text"
+          id="location"
+          name="location"
+          placeholder="location"
+          onChange={this.handleOnChange}
+        />
+        <br />
+        <input
+          type="text"
+          id="title"
+          name="title"
+          placeholder="title"
+          onChange={this.handleOnChange}
+        />
+        <br />
+        <textarea
+          type="text"
+          id="content"
+          name="content"
+          placeholder="content"
+          onChange={this.handleOnChange}
+        />
+        <br />
+        <button onClick={this.handleCreateEntry} data-id="create-entry">Create Entry</button>
       </form>
     );
   }

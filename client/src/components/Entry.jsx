@@ -7,7 +7,26 @@ export default class Entry extends React.Component {
     this.state = {
       entry: this.props.location.state.entry
     }
+    this.handleDelete = this.handleDelete.bind(this);
   }
+
+  handleDelete() {
+    console.log('Baleeted!');
+    const url = `http://localhost:5000/api/entries/entry/${this.state.entry.id}`;
+    fetch(url, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+        Accept: 'application/json'
+      }
+    })
+      .then(res => res.json())
+      .then(response => {
+        console.log('Success:', (response))
+      })
+      .catch(error => console.error('Error:', error));
+  }
+
   render() {
     // console.log(this.props)
     const entry = this.props.location.state.entry
@@ -24,10 +43,13 @@ export default class Entry extends React.Component {
             state: { entry }
           }
         }>
-          Edit Entry
+          <button>
+            Edit Entry
+          </button>
         </Link>
         <br />
-        <Link to={`/`}>Delete Entry</Link>
+        <button onClick={this.handleDelete}>Delete Entry</button>
+        <br />
         <br />
         <Link to={`/users/${this.props.match.params.username}`}>Back to User Profile</Link>
       </div>

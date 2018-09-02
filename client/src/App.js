@@ -9,6 +9,7 @@ import UserPrivateProfile          from './components/UserPrivateProfile';
 import UserPublicProfile           from './components/UserPublicProfile';
 import Entry                       from './components/Entry';
 import EditEntryForm               from './components/EditEntryForm';
+import ErrorPage                   from './components/ErrorPage';
 import './App.css';
 
 
@@ -36,6 +37,7 @@ class App extends Component {
           <Route path="/user/:id" component={UserPrivateProfile} />
           <Route exact path="/users" component={UsersDirectory} />
           <Route exact path="/" component={Hero} />
+          <Route component={ErrorPage} />
         </Switch>
       </div>
     );
