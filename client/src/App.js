@@ -10,6 +10,7 @@ import UserPublicProfile           from './components/UserPublicProfile';
 import Entry                       from './components/Entry';
 import EditEntryForm               from './components/EditEntryForm';
 import ErrorPage                   from './components/ErrorPage';
+import UserProfile                 from './components/UserProfile';
 import './App.css';
 
 
@@ -34,7 +35,7 @@ class App extends Component {
           <Route path="/users/user/entry/:edit" component={EditEntryForm} />
           <Route path="/users/:username/:entry" component={Entry} />
           <Route path="/users/:username" component={UserPublicProfile} />
-          <Route path="/user/:id" component={UserPrivateProfile} />
+          <Route path="/user/:id" component={UserProfile} />
           <Route exact path="/users" component={UsersDirectory} />
           <Route exact path="/" component={Hero} />
           <Route component={ErrorPage} />
