@@ -13,7 +13,7 @@ usersRouter.route('/:username')
 
 usersRouter.route('/')
   .get(usersController.getAll, usersResponseController.sendJSON)
-  .post(usersController.registerUser, usersResponseController.handleCreateUser)
+  .post(usersController.registerUser, usersResponseController.sendJSON)
 
 function sendError(err, req, res, next) {
   console.log('I am error');

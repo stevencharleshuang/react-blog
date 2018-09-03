@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 
 export default class RegisterForm extends React.Component {
   constructor(props) {
@@ -9,6 +10,7 @@ export default class RegisterForm extends React.Component {
       email: '',
       password: '',
       avatar_url: '',
+      redirect: false,
     }
     this.handleOnChange = this.handleOnChange.bind(this);
     this.handleRegister = this.handleRegister.bind(this);
@@ -24,11 +26,12 @@ export default class RegisterForm extends React.Component {
 
   handleRegister(e) {
     e.preventDefault();
-    console.log('Registration Submitted');
+    // console.log('Registration Submitted');
     this.handleSubmit(this.state);
   }
 
   handleSubmit(formData) {
+    // console.log('handling submit!');
     const url = 'http://localhost:5000/api/users';
     fetch(url, {
       method: 'POST',
@@ -40,13 +43,25 @@ export default class RegisterForm extends React.Component {
     })
       .then(res => res.json())
       .then(response => {
-        console.log('Success:', (response))
+        // console.log('Success:', (response))
+        this.setState((prevState) => ({
+          redirect: !prevState.redirect
+        }))
       })
       .catch(error => console.error('Error:', error));
   }
 
+  renderRedirect() {
+    if (this.state.redirect) {
+      return <Redirect to='/login' />
+    }
+  }
+
   render() {
-    // console.log(this.state)
+    // console.log(this.state);
+    if (this.state.redirect) {
+       return <Redirect to='/login'/>;
+     }
     return (
       <div className="register-form">
         <form>
