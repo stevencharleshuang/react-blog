@@ -6,8 +6,9 @@ export default function Nav (props) {
     <nav>
       <ul>
         <Link to="/"><li>Home</li></Link>
-        <Link to="/users"><li>Users Directory</li></Link>
         <Link to="/user/:username"><li>User Private Profile</li></Link>
+        <Link to="/login"><li>Log In</li></Link>
+        <Link to="/register"><li>Register</li></Link>
       </ul>
     </nav>
   );

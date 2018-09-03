@@ -1,4 +1,7 @@
 import React from 'react';
+import Entries from './Entries';
+import EditUserForm from './EditUserForm';
+import CreateEntryForm from './CreateEntryForm';
 
 export default class UserProfile extends React.Component {
   constructor(props) {
