@@ -5,8 +5,8 @@ export default class EditUserForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: this.props.user_id,
-      username: this.props.username,
+      id: this.props.user.id,
+      username: this.props.user.username,
       name: this.props.user.name,
       email: this.props.user.email,
       password: this.props.user.password,
@@ -49,7 +49,7 @@ export default class EditUserForm extends React.Component {
   }
 
   render() {
-    console.log('EditUserForm props:', this.props.user.username);
+    console.log('EditUserForm props:', this.props);
     console.log('Edit User Form state: ', this.state);
     const user = this.props.user
     return(

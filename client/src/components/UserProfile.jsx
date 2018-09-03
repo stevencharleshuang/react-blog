@@ -25,13 +25,20 @@ export default class UserProfile extends React.Component {
     console.log('UserProfile state: ', this.state);
     console.log('UserProfile props: ', this.props);
     const user = this.state.user;
+    console.log('UserProfile user', user);
     return(
       <div className="user-profile">
         <h1>Hello, {user.username}!</h1>
         {
           !this.state.authenticated
-            ? 'You get the public view'
-            : 'You get the private view'
+            ? <Entries />
+            : <div className="user-profile-private">
+                <CreateEntryForm user={user} />
+                <EditUserForm user={user} />
+                <Entries user={user} />
+                {/* Render Void
+                */}
+              </div>
         }
       </div>
     );

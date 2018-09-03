@@ -6,12 +6,12 @@ export default class Entries extends React.Component {
     super(props);
     this.state = {
       entries: [],
-      user_id: this.props.user_id // ToDo: This is hardcoded, make dynamic
+      user: this.props.user,
     }
   }
 
   componentWillMount() {
-    const url = `http://localhost:5000/api/entries/users/user/${this.state.user_id}`;
+    const url = `http://localhost:5000/api/entries/users/user/${this.state.user.id}`;
     console.log(url);
     fetch(url, {
       method: 'GET',
@@ -29,6 +29,8 @@ export default class Entries extends React.Component {
   }
 
   render() {
+    console.log('Entries state: ', this.state);
+    console.log('Entries props: ', this.props);
     const fetchedEntries = this.state.entries;
     const userEntries = fetchedEntries.map((entry, i) => {
       return (

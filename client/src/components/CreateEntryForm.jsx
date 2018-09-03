@@ -9,7 +9,7 @@ export default class CreateEntryForm extends React.Component {
       location: '',
       title: '',
       content: '',
-      user_id: this.props.user_id,
+      user_id: this.props.user.id,
     }
     this.handleOnChange = this.handleOnChange.bind(this);
     this.handleCreateEntry = this.handleCreateEntry.bind(this);
