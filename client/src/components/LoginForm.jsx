@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import TokenService from '../services/TokenService';
 
 export default class LoginForm extends React.Component {
@@ -8,7 +9,8 @@ export default class LoginForm extends React.Component {
       username: '',
       password: '',
       loggedInUser: '',
-      authenticated: this.props.authenticated
+      authenticated: this.props.authenticated,
+      redirect: false,
     }
     this.handleOnChange = this.handleOnChange.bind(this);
     this.handleLogIn    = this.handleLogIn.bind(this);
@@ -49,13 +51,31 @@ export default class LoginForm extends React.Component {
       .then(response => {
         console.log('Success:', (response));
         TokenService.save(response.token);
-        this.setState({ authenticated: true, loggedInUser: response.user })
+        this.setState((prevState) => ({
+          authenticated: !prevState.authenticated,
+          loggedInUser: response.user,
+          redirect: !prevState.redirect
+        }));
       })
       .catch(error => console.error('Error:', error));
   }
 
   render() {
     // console.log('state: ', this.state)
+    const user = this.state.loggedInUser;
+    // console.log('loggedInUser: ', user);
+    if (this.state.redirect) {
+      return (
+        <Redirect to=
+          {
+            {
+              pathname: `/user/${user.id}`,
+              state: { user }
+            }
+          }
+        />
+      );
+    }
     return (
     <div className="login-form">
       <span>Authenticated: {this.state.authenticated ? 'True' : 'False'}</span>

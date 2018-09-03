@@ -7,14 +7,16 @@ export default class UserProfile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      user: this.props.location.state.user,
     }
   }
 
   render() {
+    console.log('UserProfile state: ', this.state);
+    console.log('UserProfile props: ', this.props);
     return(
       <div className="user-profile">
-        <h1>User Profile, Dave</h1>
+        <h1>Hello, {this.state.user.username}!</h1>
       </div>
     );
   }

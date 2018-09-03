@@ -60,8 +60,8 @@ export default class RegisterForm extends React.Component {
   render() {
     // console.log(this.state);
     if (this.state.redirect) {
-       return <Redirect to='/login'/>;
-     }
+     return <Redirect to='/login'/>;
+    }
     return (
       <div className="register-form">
         <form>
