@@ -36,25 +36,34 @@ export default class Entries extends React.Component {
     // console.log('Entries props: ', this.props);
     // console.log('Local Storage', window.localStorage)
     const fetchedEntries = this.state.entries;
-    const userEntries = fetchedEntries.map((entry, i) => {
-      return (
-        <li key={i}>
-          <Link to={
-            {
-              pathname: `/users/user/${entry.id}`,
-              state: { entry }
-            }
-          }>
-            <strong>{entry.title}</strong>
-            <br />
-            <span>{entry.date_created}</span>
-          </Link>
-        </li>
-      );
-    })
+    let userEntries;
+    {
+      fetchedEntries !== undefined && userEntries !== undefined
+        ? null
+        : userEntries = fetchedEntries.map((entry, i) => {
+            return (
+              <li key={i}>
+                <Link to={
+                  {
+                    pathname: `/users/user/${entry.id}`,
+                    state: { entry }
+                  }
+                }>
+                  <strong>{entry.title}</strong>
+                  <br />
+                  <span>{entry.date_created}</span>
+                </Link>
+              </li>
+            );
+          })
+    }
     return (
       <div className="entries">
-        {userEntries}
+        {
+          userEntries
+          ? <userEntries />
+          : 'No entries to show =('
+        }
       </div>
     );
   }

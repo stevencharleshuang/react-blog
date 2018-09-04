@@ -5,8 +5,7 @@ import LoginForm                   from './components/LoginForm';
 import RegisterForm       from './components/RegisterForm';
 import Hero               from './components/Hero';
 import UsersDirectory     from './components/UsersDirectory';
-import UserPrivateProfile from './components/UserPrivateProfile';
-import UserPublicProfile  from './components/UserPublicProfile';
+import Entries              from './components/Entries';
 import Entry              from './components/Entry';
 import EditEntryForm      from './components/EditEntryForm';
 import EditUserForm       from './components/EditUserForm';
@@ -35,7 +34,7 @@ class App extends Component {
           <Route path="/users/user/entry/:edit" component={EditEntryForm} />
           <Route path="/users/user/edit/:edit" component={EditUserForm} />
           <Route path="/users/:username/:entry" component={Entry} />
-          <Route path="/users/:username" component={UserPublicProfile} />
+          <Route path="/users/:username" component={Entries} />
           <Route path="/user/:id" component={UserProfile} />
           <Route exact path="/login" component={LoginForm} />
           <Route exact path="/register" component={RegisterForm} />

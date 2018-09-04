@@ -20,7 +20,7 @@ export default class UsersDirectory extends React.Component {
     })
       .then(res => res.json())
       .then(response => {
-        // console.log('Success:', (response));
+        console.log('Success:', (response));
         this.setState({ users: response })
       })
       .catch(error => console.error('Error:', error));
