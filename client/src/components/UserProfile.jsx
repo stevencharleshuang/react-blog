@@ -9,7 +9,8 @@ export default class UserProfile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: JSON.parse(window.localStorage.getItem('user')) || this.props.location.state.user,
+      user: JSON.parse(window.localStorage.getItem('user'))
+              || this.props.location.state.user,
       authenticated: false,
     }
   }
@@ -23,11 +24,11 @@ export default class UserProfile extends React.Component {
   }
 
   render() {
-    console.log('UserProfile state: ', this.state);
-    console.log('UserProfile props: ', this.props);
+    // console.log('UserProfile state: ', this.state);
+    // console.log('UserProfile props: ', this.props);
     const user = this.state.user;
-    console.log('UserProfile user', user);
-    console.log('UserProfile user.id', user.id);
+    // console.log('UserProfile user', user);
+    // console.log('UserProfile user.id', user.id);
     return(
       <div className="user-profile">
         <h1>Hello, {user.username}!</h1>
@@ -35,9 +36,9 @@ export default class UserProfile extends React.Component {
           !this.state.authenticated
             ? <h1>Please Log In or Register</h1>
             : <div className="user-profile-private">
-                <CreateEntryForm user={user} />
+                <CreateEntryForm user={ user } />
                 <br />
-                <Entries user={user} />
+                <Entries user={ user } />
               </div>
         }
         <br />
@@ -46,7 +47,7 @@ export default class UserProfile extends React.Component {
             ? null
             : <Link to={
                 {
-                  pathname:`/users/user/edit/${user.id}`,
+                  pathname:`/users/user/edit/${ user.id }`,
                   state: { user }
                 }
               }>
