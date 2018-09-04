@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Entries from './Entries';
 import EditUserForm from './EditUserForm';
 import CreateEntryForm from './CreateEntryForm';
@@ -8,13 +9,13 @@ export default class UserProfile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: this.props.location.state.user,
+      user: window.localStorage.getItem('userID') || this.props.location.state.user,
       authenticated: false,
     }
   }
 
   componentWillMount() {
-    if (TokenService) {
+    if (window.localStorage.getItem('authToken')) {
       this.setState((prevState) => ({
         authenticated: !prevState.authenticated
       }))
@@ -31,15 +32,28 @@ export default class UserProfile extends React.Component {
         <h1>Hello, {user.username}!</h1>
         {
           !this.state.authenticated
-            ? <Entries />
+            ? <h1>Please Log In or Register</h1>
             : <div className="user-profile-private">
                 <CreateEntryForm user={user} />
-                <EditUserForm user={user} />
+                <br />
                 <Entries user={user} />
-                {/* Render Void
-                */}
               </div>
         }
+        <br />
+        {
+          !this.state.authenticated
+            ? null
+            : <Link to={
+                {
+                  pathname:`/users/user/edit/${user.id}`,
+                  state: { user }
+                }
+              }>
+                Edit User
+              </Link>
+        }
+      {/* Render Void
+      */}
       </div>
     );
   }

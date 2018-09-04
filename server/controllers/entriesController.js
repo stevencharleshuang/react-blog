@@ -24,7 +24,7 @@ module.exports = {
 
   async getEntriesByUserID(req, res, next) {
     try {
-      console.log('entriesController hit', req.params.id)
+      console.log('entriesController hit', req.params.userID)
       res.locals.entries = await entriesModel.findEntriesByUserID(req.params.userID);
       next();
     } catch(err) {

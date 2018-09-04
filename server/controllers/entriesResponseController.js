@@ -7,6 +7,7 @@ module.exports = {
 
   sendJSON(req, res) {
     // show one or a collection
+    console.log(res.locals);
     res.json(res.locals.entries || res.locals.entry);
   },
 

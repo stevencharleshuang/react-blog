@@ -1,6 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import TokenService from '../services/TokenService';
+import UserService from '../services/UserService';
 
 export default class LoginForm extends React.Component {
   constructor(props) {
@@ -11,6 +12,7 @@ export default class LoginForm extends React.Component {
       loggedInUser: '',
       authenticated: this.props.authenticated,
       redirect: false,
+      error: false,
     }
     this.handleOnChange = this.handleOnChange.bind(this);
     this.handleLogIn    = this.handleLogIn.bind(this);
@@ -34,6 +36,7 @@ export default class LoginForm extends React.Component {
     e.preventDefault();
     console.log(e.target.data);
     TokenService.destroy();
+    UserService.destroy();
     this.setState({ authenticated: false });
   }
 
@@ -51,13 +54,19 @@ export default class LoginForm extends React.Component {
       .then(response => {
         console.log('Success:', (response));
         TokenService.save(response.token);
+        UserService.save(response.user, response.user.id, response.user.username);
         this.setState((prevState) => ({
           authenticated: !prevState.authenticated,
           loggedInUser: response.user,
           redirect: !prevState.redirect
         }));
       })
-      .catch(error => console.error('Error:', error));
+      .catch(error => {
+        console.error('Error:', error)
+        this.setState((prevState) => ({
+          error: !prevState.error,
+        }))
+      });
   }
 
   render() {
@@ -66,14 +75,16 @@ export default class LoginForm extends React.Component {
     // console.log('loggedInUser: ', user);
     if (this.state.redirect) {
       return (
-        <Redirect to=
-          {
-            {
-              pathname: `/user/${user.id}`,
-              state: { user }
-            }
-          }
-        />
+        user === undefined
+          ? <Redirect to="/404" />
+          : <Redirect to=
+              {
+                {
+                  pathname: `/user/${user.id}`,
+                  state: { user }
+                }
+              }
+            />
       );
     }
     return (

@@ -5,12 +5,12 @@ export default class EditUserForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: this.props.user.id,
-      username: this.props.user.username,
-      name: this.props.user.name,
-      email: this.props.user.email,
-      password: this.props.user.password,
-      avatar_url: this.props.user.avatar_url,
+      id: this.props.location.state.user.id,
+      username: this.props.location.state.user.username,
+      name: this.props.location.state.user.name,
+      email: this.props.location.state.user.email,
+      password: this.props.location.state.user.password,
+      avatar_url: this.props.location.state.user.avatar_url,
     }
     this.handleOnChange = this.handleOnChange.bind(this);
     this.handleEditUser = this.handleEditUser.bind(this);
@@ -51,7 +51,7 @@ export default class EditUserForm extends React.Component {
   render() {
     console.log('EditUserForm props:', this.props);
     console.log('Edit User Form state: ', this.state);
-    const user = this.props.user
+    const user = this.props.location.state.user
     return(
       <div className="edit-user-form">
         <h1>Edit User Form</h1>
@@ -90,6 +90,9 @@ export default class EditUserForm extends React.Component {
           <br />
           <button onClick={this.handleEditUser} data-id="edit-user">Edit User</button>
         </form>
+        {/* Render Void
+
+        */}
       </div>
     );
   }

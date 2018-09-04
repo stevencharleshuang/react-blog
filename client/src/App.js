@@ -2,15 +2,16 @@ import React, { Component }        from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
 import Nav                         from './components/Nav';
 import LoginForm                   from './components/LoginForm';
-import RegisterForm                from './components/RegisterForm';
-import Hero                        from './components/Hero';
-import UsersDirectory              from './components/UsersDirectory';
-import UserPrivateProfile          from './components/UserPrivateProfile';
-import UserPublicProfile           from './components/UserPublicProfile';
-import Entry                       from './components/Entry';
-import EditEntryForm               from './components/EditEntryForm';
-import ErrorPage                   from './components/ErrorPage';
-import UserProfile                 from './components/UserProfile';
+import RegisterForm       from './components/RegisterForm';
+import Hero               from './components/Hero';
+import UsersDirectory     from './components/UsersDirectory';
+import UserPrivateProfile from './components/UserPrivateProfile';
+import UserPublicProfile  from './components/UserPublicProfile';
+import Entry              from './components/Entry';
+import EditEntryForm      from './components/EditEntryForm';
+import EditUserForm       from './components/EditUserForm';
+import ErrorPage          from './components/ErrorPage';
+import UserProfile        from './components/UserProfile';
 import './App.css';
 
 
@@ -32,6 +33,7 @@ class App extends Component {
         <br />
         <Switch>
           <Route path="/users/user/entry/:edit" component={EditEntryForm} />
+          <Route path="/users/user/edit/:edit" component={EditUserForm} />
           <Route path="/users/:username/:entry" component={Entry} />
           <Route path="/users/:username" component={UserPublicProfile} />
           <Route path="/user/:id" component={UserProfile} />

@@ -23,7 +23,9 @@ export default class Entries extends React.Component {
       .then(res => res.json())
       .then(response => {
         console.log('Success:', (response));
-        this.setState({ entries: response })
+        response.entries
+        ? this.setState({ entries: response })
+        : null;
       })
       .catch(error => console.error('Error:', error));
   }
@@ -31,6 +33,7 @@ export default class Entries extends React.Component {
   render() {
     console.log('Entries state: ', this.state);
     console.log('Entries props: ', this.props);
+    console.log('Local Storage', window.localStorage)
     const fetchedEntries = this.state.entries;
     const userEntries = fetchedEntries.map((entry, i) => {
       return (
