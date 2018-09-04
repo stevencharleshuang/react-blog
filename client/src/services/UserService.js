@@ -1,7 +1,7 @@
 const UserService = {
-  save({ user }, userID, username) {
-    console.log('>>> UserService saving to localStorage user:', arguments);
-    window.localStorage.setItem('username', ...user);
+  save(user, userID, username) {
+    // console.log('>>> UserService saving to localStorage user:', arguments);
+    window.localStorage.setItem('user', JSON.stringify(user));
     window.localStorage.setItem('userID', userID);
     window.localStorage.setItem('username', username);
   },

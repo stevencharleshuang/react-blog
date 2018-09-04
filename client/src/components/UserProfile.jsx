@@ -9,7 +9,7 @@ export default class UserProfile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: window.localStorage.getItem('userID') || this.props.location.state.user,
+      user: JSON.parse(window.localStorage.getItem('user')) || this.props.location.state.user,
       authenticated: false,
     }
   }
@@ -27,6 +27,7 @@ export default class UserProfile extends React.Component {
     console.log('UserProfile props: ', this.props);
     const user = this.state.user;
     console.log('UserProfile user', user);
+    console.log('UserProfile user.id', user.id);
     return(
       <div className="user-profile">
         <h1>Hello, {user.username}!</h1>
