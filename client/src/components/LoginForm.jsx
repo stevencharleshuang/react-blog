@@ -1,7 +1,7 @@
-import React from 'react';
+import React        from 'react';
 import { Redirect } from 'react-router-dom';
 import TokenService from '../services/TokenService';
-import UserService from '../services/UserService';
+import UserService  from '../services/UserService';
 
 export default class LoginForm extends React.Component {
   constructor(props) {
@@ -16,7 +16,7 @@ export default class LoginForm extends React.Component {
     }
     this.handleOnChange = this.handleOnChange.bind(this);
     this.handleLogIn    = this.handleLogIn.bind(this);
-    this.handleLogOut   = this.handleLogOut.bind(this);
+
   }
 
   handleOnChange(e) {
@@ -30,14 +30,6 @@ export default class LoginForm extends React.Component {
   handleLogIn(e) {
     e.preventDefault();
     this.handleSubmit(this.state);
-  }
-
-  handleLogOut(e) {
-    e.preventDefault();
-    console.log(e.target.data);
-    TokenService.destroy();
-    UserService.destroy();
-    this.setState({ authenticated: false });
   }
 
   handleSubmit(formData) {
@@ -108,11 +100,7 @@ export default class LoginForm extends React.Component {
           onChange={this.handleOnChange}
         />
         <br />
-        {
-        this.state.authenticated
-        ? <button onClick={this.handleLogOut} data-id="logout">Log Out</button>
-        : <button onClick={this.handleLogIn} data-id="login">Log In</button>
-        }
+        <button onClick={this.handleLogIn} data-id="login">Log In</button>
       </form>
     </div>
     );

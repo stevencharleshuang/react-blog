@@ -53,20 +53,22 @@ export default class Entry extends React.Component {
         {
           !this.state.authenticated
             ? null
-            : <Link to={
-                {
-                  pathname:`/users/user/entry/${entry.id}`,
-                  state: { entry }
-                }
-              }>
-                <button>
-                  Edit Entry
-                </button>
-              </Link>
+            : <div className="entry-user-options">
+                <Link to={
+                  {
+                    pathname:`/users/user/entry/${entry.id}`,
+                    state: { entry }
+                  }
+                }>
+                  <button>
+                    Edit Entry
+                  </button>
+                </Link>
+                <br />
+                  <button onClick={this.handleDelete}>Delete Entry</button>
+              </div>
         }
-        <br />
-        <button onClick={this.handleDelete}>Delete Entry</button>
-        <br />
+
         <br />
         <Link to={`/user/${entry.user_id}`}>Back to User Profile</Link>
       </div>
