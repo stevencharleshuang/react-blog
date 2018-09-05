@@ -43,6 +43,11 @@ export default class CreateEntryForm extends React.Component {
       .then(res => res.json())
       .then(response => {
         console.log('Success:', (response))
+        this.setState({
+          location: '',
+          title: '',
+          content: '',
+        })
       })
       .catch(error => console.error('Error:', error));
   }

@@ -60,8 +60,8 @@ export default class Entries extends React.Component {
     return (
       <div className="entries">
         {
-          userEntries
-          ? <userEntries />
+          userEntries !== undefined
+          ? userEntries
           : 'No entries to show =('
         }
       </div>

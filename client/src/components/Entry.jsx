@@ -1,11 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import TokenService from '../services/TokenService';
+import UserService from '../services/UserService';
 
 export default class Entry extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      entry: this.props.location.state.entry
+      entry: this.props.location.state.entry,
+      authenticated: false,
     }
     this.handleDelete = this.handleDelete.bind(this);
   }
@@ -25,6 +28,14 @@ export default class Entry extends React.Component {
         console.log('Success:', (response))
       })
       .catch(error => console.error('Error:', error));
+  }
+
+  componentWillMount() {
+    // console.log('Entry >>> compyWillMounty this.props...author_id ', this.state.entry.user_id)
+    // console.log('Entry >>> compyWillMounty UserService.read() ', UserService.read())
+    if (TokenService.read() !== undefined && parseInt(UserService.read()) === this.props.location.state.entry.user_id) {
+      console.log('>>>>> User is authorized');
+    }
   }
 
   render() {
@@ -51,7 +62,7 @@ export default class Entry extends React.Component {
         <button onClick={this.handleDelete}>Delete Entry</button>
         <br />
         <br />
-        <Link to={`/users/${this.props.match.params.username}`}>Back to User Profile</Link>
+        <Link to={`/user/${entry.user_id}`}>Back to User Profile</Link>
       </div>
     );
   };
