@@ -31,7 +31,12 @@ export default class UsersDirectory extends React.Component {
     const UsersDirectory = fetchedUsers.map((user, i) => {
       return (
         <li key={i}>
-          <Link to={`/users/${user.username}`}>
+          <Link to={
+            {
+              pathname: `/users/${user.username}`,
+              state: { username: user.username }
+            }
+          }>
             <img src={user.avatar_url} alt={user.username} />
             <br />
             {user.username}

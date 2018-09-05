@@ -42,7 +42,7 @@ export default class Entry extends React.Component {
   }
 
   render() {
-    // console.log(this.state.authenticated)
+    console.log('Entry Props', this.props)
     const entry = this.props.location.state.entry
     return (
       <div>

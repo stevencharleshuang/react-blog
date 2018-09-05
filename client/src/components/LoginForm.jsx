@@ -62,6 +62,7 @@ export default class LoginForm extends React.Component {
   }
 
   render() {
+    console.log('LoginForm props:', this.props);
     // console.log('state: ', this.state)
     const user = this.state.loggedInUser;
     // console.log('loggedInUser: ', user);
@@ -81,7 +82,6 @@ export default class LoginForm extends React.Component {
     }
     return (
     <div className="login-form">
-      <span>Authenticated: {this.state.authenticated ? 'True' : 'False'}</span>
       <br />
       <form>
         <input

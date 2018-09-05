@@ -33,7 +33,7 @@ export default class Entries extends React.Component {
 
   render() {
     // console.log('Entries state: ', this.state);
-    // console.log('Entries props: ', this.props);
+    console.log('Entries props: ', this.props);
     // console.log('Local Storage', window.localStorage)
     const fetchedEntries = this.state.entries;
     let userEntries;
@@ -59,6 +59,7 @@ export default class Entries extends React.Component {
     }
     return (
       <div className="entries">
+
         {
           userEntries !== undefined
           ? userEntries
