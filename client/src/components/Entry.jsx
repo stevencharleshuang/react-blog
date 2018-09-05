@@ -34,12 +34,15 @@ export default class Entry extends React.Component {
     // console.log('Entry >>> compyWillMounty this.props...author_id ', this.state.entry.user_id)
     // console.log('Entry >>> compyWillMounty UserService.read() ', UserService.read())
     if (TokenService.read() !== undefined && parseInt(UserService.read()) === this.props.location.state.entry.user_id) {
-      console.log('>>>>> User is authorized');
+      // console.log('>>>>> User is authorized');
+      this.setState((prevState) => ({
+        authenticated: !prevState.authenticated
+      }));
     }
   }
 
   render() {
-    console.log(this.props)
+    // console.log(this.state.authenticated)
     const entry = this.props.location.state.entry
     return (
       <div>
@@ -47,17 +50,20 @@ export default class Entry extends React.Component {
         <h2>Date: {entry.date_created}</h2>
         <span>Location: {entry.location}</span>
         <p>{entry.content}</p>
-
-        <Link to={
-          {
-            pathname:`/users/user/entry/${entry.id}`,
-            state: { entry }
-          }
-        }>
-          <button>
-            Edit Entry
-          </button>
-        </Link>
+        {
+          !this.state.authenticated
+            ? null
+            : <Link to={
+                {
+                  pathname:`/users/user/entry/${entry.id}`,
+                  state: { entry }
+                }
+              }>
+                <button>
+                  Edit Entry
+                </button>
+              </Link>
+        }
         <br />
         <button onClick={this.handleDelete}>Delete Entry</button>
         <br />
