@@ -68,6 +68,7 @@ export default class Nav extends React.Component {
       <nav>
         <ul>
           <Link to="/"><li>Home</li></Link>
+          <Link to="/users"><li>UsersDirectory</li></Link>
           {
             this.state.authenticated === true
               ? <div className="nav-auth-options">

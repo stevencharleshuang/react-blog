@@ -52,8 +52,6 @@ class App extends Component {
         <Nav authenticated={this.state.authenticated} />
         <h1>Welcome to React Blog, Dave</h1>
         <br />
-        <Link to="/users">UsersDirectory</Link>
-        <br />
         <Switch>
           <Route path="/users/user/entry/:edit" component={EditEntryForm} />
           <Route path="/users/user/edit/:edit" component={EditUserForm} />
