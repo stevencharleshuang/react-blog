@@ -31,10 +31,11 @@ export default class Entries extends React.Component {
   }
 
   render() {
-    console.log('Entries state: ', this.state);
-    console.log('Entries props: ', this.props);
+    // console.log('Entries state: ', this.state);
+    // console.log('Entries props: ', this.props);
     // console.log('Local Storage', window.localStorage)
     const fetchedEntries = this.state.entries;
+    const user = this.state.user;
     let userEntries;
     {
       fetchedEntries !== undefined && userEntries !== undefined
@@ -45,7 +46,7 @@ export default class Entries extends React.Component {
                 <Link to={
                   {
                     pathname: `/users/user/${entry.id}`,
-                    state: { entry }
+                    state: { entry, user }
                   }
                 }>
                   <strong>{entry.title}</strong>
@@ -58,7 +59,6 @@ export default class Entries extends React.Component {
     }
     return (
       <div className="entries">
-
         {
           userEntries !== undefined
           ? userEntries

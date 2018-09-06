@@ -46,6 +46,8 @@ export default class Entry extends React.Component {
   render() {
     // console.log('Entry Props', this.props)
     const entry = this.props.location.state.entry
+    const user = this.props.location.state.user
+    // console.log('Entry entry:', entry);
     return (
       <div>
         <h1>Title: {entry.title}</h1>
@@ -59,7 +61,7 @@ export default class Entry extends React.Component {
             : <div className="entry-user-options">
                 <Link to={
                   {
-                    pathname:`/users/user/entry/${entry.id}`,
+                    pathname:`/users/user/entry/${user.username}`,
                     state: { entry }
                   }
                 }>
@@ -73,7 +75,12 @@ export default class Entry extends React.Component {
         }
 
         <br />
-        <Link to={`/user/${entry.user_id}`}>Back to User Profile</Link>
+        <Link to={
+                  {
+                    pathname: `/users/${user.username}`,
+                    state: { user }
+                  }
+                }>Back to User Profile</Link>
       </div>
     );
   };
