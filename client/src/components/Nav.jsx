@@ -23,7 +23,7 @@ export default class Nav extends React.Component {
   }
 
   componentWillMount() {
-    console.log('Nav compyWillMounty TokenService.read()', TokenService.read());
+    // console.log('Nav compyWillMounty TokenService.read()', TokenService.read());
     if (TokenService.read() !== null) {
       // console.log('>>>>> User is authorized');
       this.setState((prevState) => ({
@@ -33,7 +33,7 @@ export default class Nav extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('Nav compyWillRecProps', nextProps);
+    // console.log('Nav compyWillRecProps', nextProps);
     // if (TokenService.read() !== null) {
     //   // console.log('>>>>> User is authorized');
     //   this.setState((prevState) => ({
@@ -51,8 +51,8 @@ export default class Nav extends React.Component {
 
 
   render() {
-    console.log('Nav state: ', this.state);
-    console.log('Nav props:', this.props);
+    // console.log('Nav state: ', this.state);
+    // console.log('Nav props:', this.props);
     const userID = window.localStorage.getItem('userID');
     // console.log(userID)
     return (

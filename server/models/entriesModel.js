@@ -18,7 +18,7 @@ module.exports =  {
   },
 
   findEntriesByUserID(id) {
-    console.log('entriesModel triggered!', id)
+    // console.log('entriesModel triggered!', id)
     return db.many(`
       SELECT *
         FROM entries
@@ -27,7 +27,7 @@ module.exports =  {
   },
 
   findEntriesByUsername(username) {
-    console.log('entriesModel triggered!', username)
+    // console.log('entriesModel triggered!', username)
     return db.many(`
          SELECT *
            FROM entries
@@ -37,7 +37,7 @@ module.exports =  {
   },
 
   createEntry(entry) {
-    console.log('entriesModel says: save(entry) = ', entry);
+    // console.log('entriesModel says: save(entry) = ', entry);
     return db.one(`
       INSERT INTO entries (
                   date_created,
@@ -55,11 +55,11 @@ module.exports =  {
                   )
         RETURNING *;
     `, entry);
-  console.log('entriesDB save(entry) says: server-dive sucessful!');
+  // console.log('entriesDB save(entry) says: server-dive sucessful!');
   },
 
   updateEntry(entry, id) {
-    console.log(`reached models, args = entry: ${entry.title} id: ${id}`);
+    // console.log(`reached models, args = entry: ${entry.title} id: ${id}`);
     entry.id = id
     return db.one(`
          UPDATE entries

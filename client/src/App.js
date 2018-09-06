@@ -11,6 +11,7 @@ import EditEntryForm           from './components/EditEntryForm';
 import EditUserForm            from './components/EditUserForm';
 import ErrorPage               from './components/ErrorPage';
 import UserProfile             from './components/UserProfile';
+import CreatedEntrySuccess     from './components/CreatedEntrySuccess';
 import TokenService            from './services/TokenService';
 import UserService             from './services/UserService';
 import './App.css';
@@ -25,7 +26,7 @@ class App extends Component {
   }
 
   checkAuth() {
-    console.log('App checkAuth() hit! TokenService.read()', TokenService.read());
+    // console.log('App checkAuth() hit! TokenService.read()', TokenService.read());
     TokenService.read() !== null && this.state.authenticated !== true
     ? this.setState((prevState) => ({
       authenticated: !prevState.authenticated
@@ -37,9 +38,13 @@ class App extends Component {
     console.log('>>> App compyWillRecProps: ', nextProps);
   }
 
+  componentWillUpdate() {
+    // this.checkAuth();
+  }
+
   render() {
     this.checkAuth();
-    console.log('>>> App state: ', this.state);
+    // console.log('>>> App state: ', this.state);
     // console.log('>>> App props: ', this.props);
     return (
       <div className="App">
@@ -54,6 +59,7 @@ class App extends Component {
           <Route path="/users/:username/:entry" component={Entry} />
           <Route path="/users/:username" component={Entries} />
           <Route path="/user/:id" component={UserProfile} />
+          <Route path="/entry_success" component={CreatedEntrySuccess} />
           <Route exact path="/login" component={LoginForm} />
           <Route exact path="/register" component={RegisterForm} />
           <Route exact path="/users" component={UsersDirectory} />
