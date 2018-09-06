@@ -1,5 +1,5 @@
 import React        from 'react';
-import { Link }     from 'react-router-dom';
+import { Redirect, Link }     from 'react-router-dom';
 import TokenService from '../services/TokenService';
 import UserService  from '../services/UserService';
 
@@ -8,6 +8,7 @@ export default class Nav extends React.Component {
     super(props);
     this.state={
       authenticated: this.props.authenticated,
+      redirect: false,
     }
     this.handleLogOut = this.handleLogOut.bind(this);
   }
@@ -18,7 +19,8 @@ export default class Nav extends React.Component {
     TokenService.destroy();
     UserService.destroy();
     this.setState((prevState) => ({
-      authenticated: !prevState.authenticated
+      authenticated: !prevState.authenticated,
+      redirect: !prevState.redirect,
     }));
   }
 
@@ -55,6 +57,13 @@ export default class Nav extends React.Component {
     // console.log('Nav props:', this.props);
     const userID = window.localStorage.getItem('userID');
     // console.log(userID)
+    if (this.state.redirect) {
+      return (
+        !this.state.redirect
+          ? null
+          : <Redirect to='/logged_out' />
+      );
+    }
     return (
       <nav>
         <ul>
