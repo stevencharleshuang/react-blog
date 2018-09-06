@@ -6,7 +6,10 @@ export default class Entries extends React.Component {
     super(props);
     this.state = {
       entries: [],
-      user: this.props.location.state.user || JSON.parse(window.localStorage.getItem('user')) || undefined
+      user: this.props.user ||
+            this.props.location.state.user ||
+            JSON.parse(window.localStorage.getItem('user')) ||
+            undefined
 
     }
   }

@@ -62,7 +62,13 @@ export default class Nav extends React.Component {
           {
             this.state.authenticated === true
               ? <div className="nav-auth-options">
-                  <Link to={`/user/${userID}`}>
+                  <Link to=
+                    {
+                      {
+                        pathname: `/user/${userID}`,
+                        state: this.state.authenticated
+                      }
+                    }>
                     <li>
                       User Private Profile
                     </li>
