@@ -34,7 +34,7 @@ export default class UserProfile extends React.Component {
         <h1>Hello, {user.username}!</h1>
         {
           !this.state.authenticated
-            ? <h1>Please Log In or Register</h1>
+            ? <h1>Please <Link to="/login">Log In</Link> or <Link to="/register">Register</Link></h1>
             : <div className="user-profile-private">
                 <CreateEntryForm user={ user } />
                 <br />

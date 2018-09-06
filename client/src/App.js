@@ -24,20 +24,23 @@ class App extends Component {
     }
   }
 
-  componentWillUpdate(nextProps, nextState) {
-    // console.log('App compyWillUpdy');
-    console.log('>>>>>> App compyWillUpdy nextProps: ', nextProps, 'nextState:', nextState);
-    TokenService.read() !== null && this.state.authenticated !== !!TokenService.read()
-      ? this.setState((prevState) => ({
-          authenticated: true
-        }))
-      : null
+  checkAuth() {
+    console.log('App checkAuth() hit! TokenService.read()', TokenService.read());
+    TokenService.read() !== null && this.state.authenticated !== true
+    ? this.setState((prevState) => ({
+      authenticated: !prevState.authenticated
+      }))
+    : null;
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log('>>> App compyWillRecProps: ', nextProps);
   }
 
   render() {
+    this.checkAuth();
     console.log('>>> App state: ', this.state);
     console.log('>>> App props: ', this.props);
-
     return (
       <div className="App">
         <Nav authenticated={this.state.authenticated} />

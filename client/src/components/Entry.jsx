@@ -14,7 +14,7 @@ export default class Entry extends React.Component {
   }
 
   handleDelete() {
-    console.log('Baleeted!');
+    // console.log('Baleeted!');
     const url = `http://localhost:5000/api/entries/entry/${this.state.entry.id}`;
     fetch(url, {
       method: 'DELETE',
@@ -25,7 +25,7 @@ export default class Entry extends React.Component {
     })
       .then(res => res.json())
       .then(response => {
-        console.log('Success:', (response))
+        // console.log('Success:', (response))
       })
       .catch(error => console.error('Error:', error));
   }
@@ -42,7 +42,7 @@ export default class Entry extends React.Component {
   }
 
   render() {
-    console.log('Entry Props', this.props)
+    // console.log('Entry Props', this.props)
     const entry = this.props.location.state.entry
     return (
       <div>

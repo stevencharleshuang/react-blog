@@ -13,7 +13,7 @@ export default class Entries extends React.Component {
 
   componentWillMount() {
     const url = `http://localhost:5000/api/entries/users/user/${this.state.user.id}`;
-    console.log(url);
+    // console.log(url);
     fetch(url, {
       method: 'GET',
       headers: {
@@ -23,7 +23,7 @@ export default class Entries extends React.Component {
     })
       .then(res => res.json())
       .then(response => {
-        console.log('Success:', (response));
+        // console.log('Success:', (response));
         response.entries
         ? this.setState({ entries: response })
         : null;
@@ -33,7 +33,7 @@ export default class Entries extends React.Component {
 
   render() {
     // console.log('Entries state: ', this.state);
-    console.log('Entries props: ', this.props);
+    // console.log('Entries props: ', this.props);
     // console.log('Local Storage', window.localStorage)
     const fetchedEntries = this.state.entries;
     let userEntries;

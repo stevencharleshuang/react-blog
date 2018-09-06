@@ -44,7 +44,7 @@ export default class LoginForm extends React.Component {
     })
       .then(res => res.json())
       .then(response => {
-        console.log('Success:', (response));
+        // console.log('Success:', (response));
         TokenService.save(response.token);
         UserService.save(response.user, response.user.id, response.user.username);
         this.setState((prevState) => ({
@@ -62,7 +62,7 @@ export default class LoginForm extends React.Component {
   }
 
   render() {
-    console.log('LoginForm props:', this.props);
+    // console.log('LoginForm props:', this.props);
     // console.log('state: ', this.state)
     const user = this.state.loggedInUser;
     // console.log('loggedInUser: ', user);

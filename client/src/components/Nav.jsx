@@ -7,36 +7,42 @@ export default class Nav extends React.Component {
   constructor(props) {
     super(props);
     this.state={
-      authenticated: this.props.authenticated || false,
+      authenticated: this.props.authenticated,
     }
     this.handleLogOut = this.handleLogOut.bind(this);
   }
 
   handleLogOut(e) {
     e.preventDefault();
-    console.log(e.target.data);
+    // console.log(e.target.data);
     TokenService.destroy();
     UserService.destroy();
     this.setState({ authenticated: false });
-    this.setProps({ authenticated: false });
   }
 
   componentWillMount() {
-    // console.log('Nav compyWillMounty TokenService.read()', TokenService.read());
+    console.log('Nav compyWillMounty TokenService.read()', TokenService.read());
     if (TokenService.read() !== null) {
       // console.log('>>>>> User is authorized');
       this.setState((prevState) => ({
-        authenticated: true
+        authenticated: !prevState.authenticated
       }));
     }
   }
 
-  componentWillUpdate(nextProps, nextState) {
-    nextProps = this.props.authenticated;
-    // console.log('Nav compyWillUpdy nextProps:', nextProps);
-    this.state.authenticated !== nextProps
+  componentWillReceiveProps(nextProps) {
+    console.log('Nav compyWillRecProps', nextProps);
+    // if (TokenService.read() !== null) {
+    //   // console.log('>>>>> User is authorized');
+    //   this.setState((prevState) => ({
+    //     authenticated: true
+    //   }));
+    // }
+    // nextProps = this.props.authenticated;
+    // // console.log('Nav compyWillUpdy nextProps:', nextProps);
+    this.state.authenticated !== nextProps.authenticated
     ? this.setState((prevState) => ({
-        authenticated: nextProps
+        authenticated: nextProps.authenticated
       }))
     : null
   }
@@ -51,10 +57,20 @@ export default class Nav extends React.Component {
       <nav>
         <ul>
           <Link to="/"><li>Home</li></Link>
-          <Link to={`/user/${userID}`}><li>User Private Profile</li></Link>
           {
             this.state.authenticated === true
-              ? <button onClick={this.handleLogOut} data-id="logout">Log Out</button>
+              ? <div className="nav-auth-options">
+                  <Link to={`/user/${userID}`}>
+                    <li>
+                      User Private Profile
+                    </li>
+                  </Link>
+                  <li>
+                    <button onClick={this.handleLogOut} data-id="logout">
+                      Log Out
+                    </button>
+                  </li>
+                </div>
               : <div className="nav-auth-options">
                   <Link to=
                     {
@@ -62,10 +78,14 @@ export default class Nav extends React.Component {
                         pathname: '/login',
                         state: this.state.authenticated
                       }
-                    }>
-                      <li>Log In</li>
-                    </Link>
-                  <Link to="/register"><li>Register</li></Link>
+                    }
+                  >
+                    <li>
+                      Log In
+                    </li>
+                  </Link>
+                  <Link to="/register">
+                  <li>Register</li></Link>
                 </div>
           }
         </ul>
