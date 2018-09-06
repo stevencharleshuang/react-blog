@@ -34,7 +34,7 @@ export default class UsersDirectory extends React.Component {
           <Link to={
             {
               pathname: `/users/${user.username}`,
-              state: { username: user.username }
+              state: { user, username: user.username }
             }
           }>
             <img src={user.avatar_url} alt={user.username} />

@@ -33,7 +33,9 @@ export default class Entry extends React.Component {
   componentWillMount() {
     // console.log('Entry >>> compyWillMounty this.props...author_id ', this.state.entry.user_id)
     // console.log('Entry >>> compyWillMounty UserService.read() ', UserService.read())
-    if (TokenService.read() !== undefined && parseInt(UserService.read()) === this.props.location.state.entry.user_id) {
+    if (TokenService.read() !== undefined
+        && parseInt(UserService.read())
+          === this.props.location.state.entry.user_id) {
       // console.log('>>>>> User is authorized');
       this.setState((prevState) => ({
         authenticated: !prevState.authenticated
@@ -52,6 +54,7 @@ export default class Entry extends React.Component {
         <p>{entry.content}</p>
         {
           !this.state.authenticated
+          && parseInt(window.localStorage.getItem('userID')) !== entry.user_id
             ? null
             : <div className="entry-user-options">
                 <Link to={

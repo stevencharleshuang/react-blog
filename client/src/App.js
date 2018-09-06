@@ -40,7 +40,7 @@ class App extends Component {
   render() {
     this.checkAuth();
     console.log('>>> App state: ', this.state);
-    console.log('>>> App props: ', this.props);
+    // console.log('>>> App props: ', this.props);
     return (
       <div className="App">
         <Nav authenticated={this.state.authenticated} />

@@ -6,8 +6,7 @@ export default class Entries extends React.Component {
     super(props);
     this.state = {
       entries: [],
-      user: JSON.parse(window.localStorage.getItem('user'))
-              || this.props.user,
+      user: this.props.location.state.user || JSON.parse(window.localStorage.getItem('user'))
     }
   }
 
@@ -32,8 +31,8 @@ export default class Entries extends React.Component {
   }
 
   render() {
-    // console.log('Entries state: ', this.state);
-    // console.log('Entries props: ', this.props);
+    console.log('Entries state: ', this.state);
+    console.log('Entries props: ', this.props);
     // console.log('Local Storage', window.localStorage)
     const fetchedEntries = this.state.entries;
     let userEntries;

@@ -17,7 +17,9 @@ export default class Nav extends React.Component {
     // console.log(e.target.data);
     TokenService.destroy();
     UserService.destroy();
-    this.setState({ authenticated: false });
+    this.setState((prevState) => ({
+      authenticated: !prevState.authenticated
+    }));
   }
 
   componentWillMount() {
