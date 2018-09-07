@@ -43,6 +43,8 @@ export default class UserProfile extends React.Component {
       <div className="user-profile">
         <h1>Hello, {user.username}!</h1>
         <br />
+        <img src={user.avatar_url} />
+        <br />
         {
           !this.state.authorized
             ? null
