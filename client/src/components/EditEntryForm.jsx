@@ -50,7 +50,8 @@ export default class EditEntryForm extends React.Component {
   render() {
     console.log('EditEntryForm props:', this.props);
     console.log('state: ', this.state);
-    const entry = this.props.location.state.entry
+    const entry = this.props.location.state.entry;
+    const user = this.props.location.state.user;
     return(
       <div className="edit-entry-form">
         <h1>Edit Entry Form</h1>
@@ -85,7 +86,7 @@ export default class EditEntryForm extends React.Component {
         <Link to={
           {
             pathname: `/users/user/${entry.id}`,
-            state: { entry }
+            state: { entry, user }
           }
         }>
           Back to Entry

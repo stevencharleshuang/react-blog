@@ -73,7 +73,7 @@ export default class Entry extends React.Component {
                 <Link to={
                   {
                     pathname:`/users/user/entry/${entry.id}`,
-                    state: { entry }
+                    state: { entry, user }
                   }
                 }>
                   <button>
