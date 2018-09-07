@@ -65,6 +65,7 @@ export default class Entry extends React.Component {
         <h2>Date: {entry.date_created}</h2>
         <span>Location: {entry.location}</span>
         <p>{entry.content}</p>
+
         {
           !this.state.authenticated
           && parseInt(window.localStorage.getItem('userID')) !== entry.user_id
@@ -87,11 +88,13 @@ export default class Entry extends React.Component {
 
         <br />
         <Link to={
-                  {
-                    pathname: `/users/${user.id}`,
-                    state: { user }
-                  }
-                }>Back to User Profile</Link>
+          {
+            pathname: `/users/${user.id}`,
+            state: { user }
+          }
+        }>
+          Back to User Profile
+        </Link>
       </div>
     );
   };

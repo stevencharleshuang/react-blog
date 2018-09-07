@@ -1,5 +1,5 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default class EditUserForm extends React.Component {
   constructor(props) {
@@ -90,6 +90,15 @@ export default class EditUserForm extends React.Component {
           <br />
           <button onClick={this.handleEditUser} data-id="edit-user">Edit User</button>
         </form>
+        <br />
+        <Link to={
+          {
+            pathname: `/user/${user.id}`,
+            state: { user }
+          }
+        }>
+          Back to User Profile
+        </Link>
         {/* Render Void
 
         */}
