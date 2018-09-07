@@ -1,9 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import Entries from './Entries';
-import EditUserForm from './EditUserForm';
+import React           from 'react';
+import { Link }        from 'react-router-dom';
 import CreateEntryForm from './CreateEntryForm';
-import TokenService from '../services/TokenService';
+import EditUserForm    from './EditUserForm';
+import Entries         from './Entries';
+import TokenService    from '../services/TokenService';
 
 export default class UserProfile extends React.Component {
   constructor(props) {

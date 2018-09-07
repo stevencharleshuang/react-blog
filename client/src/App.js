@@ -1,20 +1,20 @@
-import React, { Component }    from 'react';
-import { Link, Route, Switch, Redirect } from 'react-router-dom';
-import Nav                     from './components/Nav';
-import LoginForm               from './components/LoginForm';
-import RegisterForm            from './components/RegisterForm';
-import Hero                    from './components/Hero';
-import UsersDirectory          from './components/UsersDirectory';
-import Entries                 from './components/Entries';
-import Entry                   from './components/Entry';
-import EditEntryForm           from './components/EditEntryForm';
-import EditUserForm            from './components/EditUserForm';
-import ErrorPage               from './components/ErrorPage';
-import UserProfile             from './components/UserProfile';
-import CreatedEntrySuccess     from './components/CreatedEntrySuccess';
-import LoggedOut               from './components/LoggedOut';
-import TokenService            from './services/TokenService';
-import UserService             from './services/UserService';
+import React, { Component }        from 'react';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import CreatedEntrySuccess         from './components/CreatedEntrySuccess';
+import EditEntryForm               from './components/EditEntryForm';
+import EditUserForm                from './components/EditUserForm';
+import Entries                     from './components/Entries';
+import Entry                       from './components/Entry';
+import ErrorPage                   from './components/ErrorPage';
+import Hero                        from './components/Hero';
+import LoggedOut                   from './components/LoggedOut';
+import LoginForm                   from './components/LoginForm';
+import Nav                         from './components/Nav';
+import RegisterForm                from './components/RegisterForm';
+import UsersDirectory              from './components/UsersDirectory';
+import UserProfile                 from './components/UserProfile';
+import TokenService                from './services/TokenService';
+import UserService                 from './services/UserService';
 import './App.css';
 
 
