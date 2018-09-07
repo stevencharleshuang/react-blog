@@ -22,9 +22,13 @@ export default class UserProfile extends React.Component {
         authenticated: !prevState.authenticated
       }));
     }
-    if (this.state.user.id === parseInt(window.localStorage.getItem('userID'))) {
+    if (this.state.authenticated === false && this.state.user.id !== parseInt(window.localStorage.getItem('userID'))) {
       this.setState((prevState) => ({
-        authorized: !prevState.authorized
+        authorized: false
+      }));
+    } else {
+      this.setState((prevState) => ({
+        authorized: true
       }));
     }
   }
@@ -40,7 +44,7 @@ export default class UserProfile extends React.Component {
         <h1>Hello, {user.username}!</h1>
         <br />
         {
-          !this.state.authenticated && !this.state.authorized
+          !this.state.authorized
             ? null
             : <Link to={
                 {
@@ -53,7 +57,7 @@ export default class UserProfile extends React.Component {
         }
         <br />
         {
-          !this.state.authenticated && !this.state.authorized
+          !this.state.authorized
             ? null
             : <div className="user-profile-private">
                 <CreateEntryForm user={ user } />
