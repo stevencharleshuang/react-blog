@@ -33,6 +33,7 @@ module.exports =  {
            FROM entries
            JOIN users ON entries.user_id = users.id
           WHERE users.username = $1
+      RETURNING entries.*;
     `, username);
   },
 

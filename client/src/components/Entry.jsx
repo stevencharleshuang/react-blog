@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import TokenService from '../services/TokenService';
 import UserService from '../services/UserService';
 
@@ -9,6 +9,7 @@ export default class Entry extends React.Component {
     this.state = {
       entry: this.props.location.state.entry,
       authenticated: false,
+      redirect: false,
     }
     this.handleDelete = this.handleDelete.bind(this);
   }
@@ -26,6 +27,9 @@ export default class Entry extends React.Component {
       .then(res => res.json())
       .then(response => {
         // console.log('Success:', (response))
+        this.setState((prevState) => ({
+          redirect: !prevState.redirect
+        }))
       })
       .catch(error => console.error('Error:', error));
   }
@@ -44,10 +48,17 @@ export default class Entry extends React.Component {
   }
 
   render() {
-    // console.log('Entry Props', this.props)
+    console.log('Entry Props', this.props)
+    // console.log('Entry State', this.state);
     const entry = this.props.location.state.entry
-    const user = this.props.location.state.user
     // console.log('Entry entry:', entry);
+    const user = this.props.location.state.user
+    if (this.state.redirect) {
+      // console.log('Entry render(), redirect triggered')
+      return (
+        <Redirect to={`/user/${user.id}`} />
+      );
+    }
     return (
       <div>
         <h1>Title: {entry.title}</h1>
@@ -61,7 +72,7 @@ export default class Entry extends React.Component {
             : <div className="entry-user-options">
                 <Link to={
                   {
-                    pathname:`/users/user/entry/${user.username}`,
+                    pathname:`/users/user/entry/${entry.id}`,
                     state: { entry }
                   }
                 }>
@@ -77,7 +88,7 @@ export default class Entry extends React.Component {
         <br />
         <Link to={
                   {
-                    pathname: `/users/${user.username}`,
+                    pathname: `/users/${user.id}`,
                     state: { user }
                   }
                 }>Back to User Profile</Link>

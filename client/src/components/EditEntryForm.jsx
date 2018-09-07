@@ -82,7 +82,14 @@ export default class EditEntryForm extends React.Component {
           <button onClick={this.handleEditEntry} data-id="edit-entry">Edit Entry</button>
         </form>
         <br />
-        <Link to={`/users/user/entry/${entry.id}`}>Back to Entry</Link>
+        <Link to={
+          {
+            pathname: `/users/user/${entry.id}`,
+            state: { entry }
+          }
+        }>
+          Back to Entry
+        </Link>
       </div>
     );
   }
