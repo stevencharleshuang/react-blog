@@ -16,7 +16,7 @@ module.exports = {
   },
 
   handleCreateUser(req, res) {
-    console.log('userResponseHandler: handleCreate() = ', req.body);
+    // console.log('userResponseHandler: handleCreate() = ', req.body);
     res.json({ message: 'Registration Successful!' });
   },
 
@@ -25,12 +25,12 @@ module.exports = {
   },
 
   handleDeleteByID(req, res) {
-    console.log(`user id: ${req.params.id} deleted`);
+    // console.log(`user id: ${req.params.id} deleted`);
     res.status(200).redirect('../');
   },
 
   handleDeleteByUsername(req, res) {
-    console.log(`user id: ${req.params.username} deleted`);
+    // console.log(`user id: ${req.params.username} deleted`);
     res.status(200).redirect('./');
   },
 

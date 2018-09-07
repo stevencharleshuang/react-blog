@@ -1,5 +1,7 @@
-import React from 'react';
+import React        from 'react';
+import { Redirect } from 'react-router-dom';
 import TokenService from '../services/TokenService';
+import UserService  from '../services/UserService';
 
 export default class LoginForm extends React.Component {
   constructor(props) {
@@ -8,11 +10,13 @@ export default class LoginForm extends React.Component {
       username: '',
       password: '',
       loggedInUser: '',
-      authenticated: this.props.authenticated
+      authenticated: this.props.authenticated,
+      redirect: false,
+      error: false,
     }
     this.handleOnChange = this.handleOnChange.bind(this);
     this.handleLogIn    = this.handleLogIn.bind(this);
-    this.handleLogOut   = this.handleLogOut.bind(this);
+
   }
 
   handleOnChange(e) {
@@ -28,13 +32,6 @@ export default class LoginForm extends React.Component {
     this.handleSubmit(this.state);
   }
 
-  handleLogOut(e) {
-    e.preventDefault();
-    console.log(e.target.data);
-    TokenService.destroy();
-    this.setState({ authenticated: false });
-  }
-
   handleSubmit(formData) {
     const url = 'http://localhost:5000/api/auth/login';
     fetch(url, {
@@ -47,18 +44,44 @@ export default class LoginForm extends React.Component {
     })
       .then(res => res.json())
       .then(response => {
-        console.log('Success:', (response));
+        // console.log('Success:', (response));
         TokenService.save(response.token);
-        this.setState({ authenticated: true, loggedInUser: response.user })
+        UserService.save(response.user, response.user.id, response.user.username);
+        this.setState((prevState) => ({
+          authenticated: !prevState.authenticated,
+          loggedInUser: response.user,
+          redirect: !prevState.redirect
+        }));
       })
-      .catch(error => console.error('Error:', error));
+      .catch(error => {
+        console.error('Error:', error)
+        this.setState((prevState) => ({
+          error: !prevState.error,
+        }))
+      });
   }
 
   render() {
+    // console.log('LoginForm props:', this.props);
     // console.log('state: ', this.state)
+    const user = this.state.loggedInUser;
+    // console.log('loggedInUser: ', user);
+    if (this.state.redirect) {
+      return (
+        user === undefined
+          ? <Redirect to="/404" />
+          : <Redirect to=
+              {
+                {
+                  pathname: `/user/${user.id}`,
+                  state: { user }
+                }
+              }
+            />
+      );
+    }
     return (
     <div className="login-form">
-      <span>Authenticated: {this.state.authenticated ? 'True' : 'False'}</span>
       <br />
       <form>
         <input
@@ -77,11 +100,7 @@ export default class LoginForm extends React.Component {
           onChange={this.handleOnChange}
         />
         <br />
-        {
-        this.state.authenticated
-        ? <button onClick={this.handleLogOut} data-id="logout">Log Out</button>
-        : <button onClick={this.handleLogIn} data-id="login">Log In</button>
-        }
+        <button onClick={this.handleLogIn} data-id="login">Log In</button>
       </form>
     </div>
     );

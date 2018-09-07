@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import UserPublicProfile from './UserPublicProfile';
 
 export default class UsersDirectory extends React.Component {
   constructor(props) {
@@ -32,8 +31,13 @@ export default class UsersDirectory extends React.Component {
     const UsersDirectory = fetchedUsers.map((user, i) => {
       return (
         <li key={i}>
-          <Link to={`/users/${user.username}`}>
-            <img src={user.avatar_url} />
+          <Link to={
+            {
+              pathname: `/users/${user.username}`,
+              state: { user, username: user.username }
+            }
+          }>
+            <img src={user.avatar_url} alt={user.username} />
             <br />
             {user.username}
           </Link>

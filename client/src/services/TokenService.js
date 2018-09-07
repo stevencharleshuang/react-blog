@@ -3,7 +3,7 @@
 
 const TokenService = {
   save(token) {
-    console.log(token);
+    // console.log(token);
     window.localStorage.setItem('authToken', token);
   },
   read() {

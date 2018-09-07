@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment';
+import { Redirect } from 'react-router-dom';
 
 export default class CreateEntryForm extends React.Component {
   constructor(props) {
@@ -9,7 +10,8 @@ export default class CreateEntryForm extends React.Component {
       location: '',
       title: '',
       content: '',
-      user_id: this.props.user_id,
+      user_id: this.props.user.id,
+      redirect: false,
     }
     this.handleOnChange = this.handleOnChange.bind(this);
     this.handleCreateEntry = this.handleCreateEntry.bind(this);
@@ -42,42 +44,63 @@ export default class CreateEntryForm extends React.Component {
     })
       .then(res => res.json())
       .then(response => {
-        console.log('Success:', (response))
+        console.log('Success:', (response));
+        this.setState((prevState) => ({
+          location: '',
+          title: '',
+          content: '',
+          redirect: !prevState.redirect,
+        }));
       })
       .catch(error => console.error('Error:', error));
   }
 
   render() {
+    if (this.state.redirect) {
+      return (
+        !this.state.redirect
+        ? null
+        : <Redirect to= {
+            {
+              pathname: `/entry_success`,
+              state: this.state.user_id
+            }
+          } />
+      );
+    }
     // console.log('CreateEntryForm props: ', this.props);
     // console.log(this.state);
     return (
-      <form className="create-entry-form">
-        <input
-          type="text"
-          id="location"
-          name="location"
-          placeholder="location"
-          onChange={this.handleOnChange}
-        />
-        <br />
-        <input
-          type="text"
-          id="title"
-          name="title"
-          placeholder="title"
-          onChange={this.handleOnChange}
-        />
-        <br />
-        <textarea
-          type="text"
-          id="content"
-          name="content"
-          placeholder="content"
-          onChange={this.handleOnChange}
-        />
-        <br />
-        <button onClick={this.handleCreateEntry} data-id="create-entry">Create Entry</button>
-      </form>
+      <div className="create-entry-form">
+        <h1>Create Entry Form</h1>
+        <form>
+          <input
+            type="text"
+            id="location"
+            name="location"
+            placeholder="location"
+            onChange={this.handleOnChange}
+          />
+          <br />
+          <input
+            type="text"
+            id="title"
+            name="title"
+            placeholder="title"
+            onChange={this.handleOnChange}
+          />
+          <br />
+          <textarea
+            type="text"
+            id="content"
+            name="content"
+            placeholder="content"
+            onChange={this.handleOnChange}
+          />
+          <br />
+          <button onClick={this.handleCreateEntry} data-id="create-entry">Create Entry</button>
+        </form>
+      </div>
     );
   }
 }

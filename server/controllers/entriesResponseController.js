@@ -7,6 +7,7 @@ module.exports = {
 
   sendJSON(req, res) {
     // show one or a collection
+    // console.log(res.locals);
     res.json(res.locals.entries || res.locals.entry);
   },
 
@@ -15,7 +16,7 @@ module.exports = {
   },
 
   handleCreateEntry(req, res) {
-    console.log('entriesResponseHandler: handleCreate() = ', req.body);
+    // console.log('entriesResponseHandler: handleCreate() = ', req.body);
     res.json({ entry: res.locals.entry });
   },
 
@@ -24,7 +25,7 @@ module.exports = {
   },
 
   handleDeleteByID(req, res) {
-    console.log(`user id: ${req.params.id} deleted`);
+    // console.log(`user id: ${req.params.id} deleted`);
     res.json;
   },
 

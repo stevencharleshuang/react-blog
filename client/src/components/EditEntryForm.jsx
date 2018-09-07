@@ -1,4 +1,4 @@
-import React from 'react';
+import React    from 'react';
 import { Link } from 'react-router-dom';
 
 export default class EditEntryForm extends React.Component {
@@ -50,10 +50,12 @@ export default class EditEntryForm extends React.Component {
   render() {
     console.log('EditEntryForm props:', this.props);
     console.log('state: ', this.state);
-    const entry = this.props.location.state.entry
+    const entry = this.props.location.state.entry;
+    const user = this.props.location.state.user;
     return(
-      <div>
-        <form className="edit-entry-form">
+      <div className="edit-entry-form">
+        <h1>Edit Entry Form</h1>
+        <form>
           <input
             type="text"
             id="location"
@@ -81,7 +83,14 @@ export default class EditEntryForm extends React.Component {
           <button onClick={this.handleEditEntry} data-id="edit-entry">Edit Entry</button>
         </form>
         <br />
-        <Link to={`/users/user/entry/${entry.id}`}>Back to Entry</Link>
+        <Link to={
+          {
+            pathname: `/users/user/${entry.id}`,
+            state: { entry, user }
+          }
+        }>
+          Back to Entry
+        </Link>
       </div>
     );
   }

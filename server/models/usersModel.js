@@ -18,7 +18,7 @@ module.exports =  {
   },
 
   findByUsername(username) {
-    console.log('hit usersModel findByUsername()')
+    // console.log('hit usersModel findByUsername()')
     return db.one(`
           SELECT *
             FROM users
@@ -27,7 +27,7 @@ module.exports =  {
   },
 
   createUser(user) {
-    console.log('usersModel says: save(user) = ', user);
+    // console.log('usersModel says: save(user) = ', user);
     return db.one(`
       INSERT INTO users (
                   name,
@@ -45,11 +45,11 @@ module.exports =  {
                   )
         RETURNING *;
     `, user);
-  console.log('userDB save(user) says: server-dive sucessful!');
+  // console.log('userDB save(user) says: server-dive sucessful!');
   },
 
   updateUser(user, id) {
-    console.log(`reached models, args = user: ${user.name} id: ${id}`);
+    // console.log(`reached models, args = user: ${user.name} id: ${id}`);
     return db.one(`
          UPDATE users
             SET name       = $/name/,

@@ -30,7 +30,7 @@ module.exports = {
         username: user.username,
         roles:    ['user'],
       });
-      res.locals.user = user.username
+      res.locals.user = user
       console.log(res.locals.token);
       next();
     } catch (err) {
