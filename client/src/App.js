@@ -1,5 +1,5 @@
 import React, { Component }    from 'react';
-import { Link, Route, Switch } from 'react-router-dom';
+import { Link, Route, Switch, Redirect } from 'react-router-dom';
 import Nav                     from './components/Nav';
 import LoginForm               from './components/LoginForm';
 import RegisterForm            from './components/RegisterForm';
@@ -23,7 +23,20 @@ class App extends Component {
     super(props);
     this.state = {
       authenticated: false,
+      logOutRedirect: false,
     }
+    this.handleLogOut = this.handleLogOut.bind(this);
+  }
+
+  handleLogOut(e) {
+    e.preventDefault();
+    // console.log('handleLogOut hit in App.jsx');
+    TokenService.destroy();
+    UserService.destroy();
+    this.setState((prevState) => ({
+      authenticated: !prevState.authenticated,
+      logOutRedirect: !prevState.redirect,
+    }));
   }
 
   checkAuth() {
@@ -47,9 +60,19 @@ class App extends Component {
     this.checkAuth();
     // console.log('>>> App state: ', this.state);
     // console.log('>>> App props: ', this.props);
+    // if (this.state.logOutRedirect) {
+    //   return (
+    //     !this.state.logOutRedirect
+    //       ? null
+    //       : <Redirect to='/user/logged_out' />
+    //   );
+    // }
     return (
       <div className="App">
-        <Nav authenticated={this.state.authenticated} />
+        <Nav
+          authenticated={this.state.authenticated}
+          handleLogOut={this.handleLogOut}
+        />
         <h1>Welcome to React Blog, Dave</h1>
         <br />
         <Switch>
@@ -59,7 +82,7 @@ class App extends Component {
           <Route path="/users/:username" component={Entries} />
           <Route path="/user/:id" component={UserProfile} />
           <Route path="/entry_success" component={CreatedEntrySuccess} />
-          <Route path="/logged_out" component={LoggedOut} />
+          <Route path="/user/logged_out" component={LoggedOut} />
           <Route exact path="/login" component={LoginForm} />
           <Route exact path="/register" component={RegisterForm} />
           <Route exact path="/users" component={UsersDirectory} />

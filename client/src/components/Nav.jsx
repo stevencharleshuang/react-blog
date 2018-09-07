@@ -3,80 +3,24 @@ import { Redirect, Link }     from 'react-router-dom';
 import TokenService from '../services/TokenService';
 import UserService  from '../services/UserService';
 
-export default class Nav extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state={
-      authenticated: this.props.authenticated,
-      redirect: false,
-    }
-    this.handleLogOut = this.handleLogOut.bind(this);
-  }
-
-  handleLogOut(e) {
-    e.preventDefault();
-    // console.log(e.target.data);
-    TokenService.destroy();
-    UserService.destroy();
-    this.setState((prevState) => ({
-      authenticated: !prevState.authenticated,
-      redirect: !prevState.redirect,
-    }));
-  }
-
-  componentWillMount() {
-    // console.log('Nav compyWillMounty TokenService.read()', TokenService.read());
-    if (TokenService.read() !== null) {
-      // console.log('>>>>> User is authorized');
-      this.setState((prevState) => ({
-        authenticated: !prevState.authenticated
-      }));
-    }
-  }
-
-  componentWillReceiveProps(nextProps) {
-    // console.log('Nav compyWillRecProps', nextProps);
-    // if (TokenService.read() !== null) {
-    //   // console.log('>>>>> User is authorized');
-    //   this.setState((prevState) => ({
-    //     authenticated: true
-    //   }));
-    // }
-    // nextProps = this.props.authenticated;
-    // // console.log('Nav compyWillUpdy nextProps:', nextProps);
-    this.state.authenticated !== nextProps.authenticated
-    ? this.setState((prevState) => ({
-        authenticated: nextProps.authenticated
-      }))
-    : null
-  }
-
-
-  render() {
-    // console.log('Nav state: ', this.state);
-    // console.log('Nav props:', this.props);
+export default function Nav(props) {
+    // console.log('Nav state: ', props);
+    // console.log('Nav props:', props);
     const userID = window.localStorage.getItem('userID');
     // console.log(userID)
-    if (this.state.redirect) {
-      return (
-        !this.state.redirect
-          ? null
-          : <Redirect to='/logged_out' />
-      );
-    }
     return (
       <nav>
         <ul>
           <Link to="/"><li>Home</li></Link>
           <Link to="/users"><li>UsersDirectory</li></Link>
           {
-            this.state.authenticated === true
+            props.authenticated === true
               ? <div className="nav-auth-options">
                   <Link to=
                     {
                       {
                         pathname: `/user/${userID}`,
-                        state: this.state.authenticated
+                        state: props.authenticated
                       }
                     }>
                     <li>
@@ -84,7 +28,7 @@ export default class Nav extends React.Component {
                     </li>
                   </Link>
                   <li>
-                    <button onClick={this.handleLogOut} data-id="logout">
+                    <button onClick={props.handleLogOut} data-id="logout">
                       Log Out
                     </button>
                   </li>
@@ -94,7 +38,7 @@ export default class Nav extends React.Component {
                     {
                       {
                         pathname: '/login',
-                        state: this.state.authenticated
+                        state: props.authenticated
                       }
                     }
                   >
@@ -109,5 +53,4 @@ export default class Nav extends React.Component {
         </ul>
       </nav>
     );
-  }
 };
