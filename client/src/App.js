@@ -72,6 +72,7 @@ class App extends Component {
         <Nav
           authenticated={this.state.authenticated}
           handleLogOut={this.handleLogOut}
+          checkAuth={this.checkAuth}
         />
         <h1>Welcome to React Blog, Dave</h1>
         <br />

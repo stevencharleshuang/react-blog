@@ -9,9 +9,10 @@ export default class UserProfile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: JSON.parse(window.localStorage.getItem('user'))
-              || this.props.location.state.user,
+      user: this.props.location.state.user
+            || this.props.user,
       authenticated: false,
+      authorized: false,
     }
   }
 
@@ -19,40 +20,27 @@ export default class UserProfile extends React.Component {
     if (window.localStorage.getItem('authToken')) {
       this.setState((prevState) => ({
         authenticated: !prevState.authenticated
-      }))
+      }));
+    }
+    if (this.state.user.id === parseInt(window.localStorage.getItem('userID'))) {
+      this.setState((prevState) => ({
+        authorized: !prevState.authorized
+      }));
     }
   }
 
   render() {
-    // console.log('UserProfile state: ', this.state);
-    // console.log('UserProfile props: ', this.props);
+    console.log('UserProfile state: ', this.state);
+    console.log('UserProfile props: ', this.props);
     const user = this.state.user;
     // console.log('UserProfile user', user);
     // console.log('UserProfile user.id', user.id);
     return(
       <div className="user-profile">
         <h1>Hello, {user.username}!</h1>
-        {
-          !this.state.authenticated
-            ? <h1>
-                Please
-                <Link to="/login">
-                  Log In
-                </Link>
-                or
-                <Link to="/register">
-                  Register
-                </Link>
-              </h1>
-            : <div className="user-profile-private">
-                <CreateEntryForm user={ user } />
-                <br />
-                <Entries user={ user } />
-              </div>
-        }
         <br />
         {
-          !this.state.authenticated
+          !this.state.authenticated && !this.state.authorized
             ? null
             : <Link to={
                 {
@@ -63,6 +51,17 @@ export default class UserProfile extends React.Component {
                 Edit User
               </Link>
         }
+        <br />
+        {
+          !this.state.authenticated && !this.state.authorized
+            ? null
+            : <div className="user-profile-private">
+                <CreateEntryForm user={ user } />
+              </div>
+        }
+        <br />
+        <Entries user={ user } />
+        <br />
       {/* Render Void
       */}
       </div>

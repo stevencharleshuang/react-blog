@@ -6,8 +6,8 @@ import UserService  from '../services/UserService';
 export default function Nav(props) {
     // console.log('Nav state: ', props);
     // console.log('Nav props:', props);
-    const userID = window.localStorage.getItem('userID');
-    // console.log(userID)
+    const user = JSON.parse(window.localStorage.getItem('user'));
+    console.log({user})
     return (
       <nav>
         <ul>
@@ -19,8 +19,8 @@ export default function Nav(props) {
                   <Link to=
                     {
                       {
-                        pathname: `/user/${userID}`,
-                        state: props.authenticated
+                        pathname: `/user/${user.id}`,
+                        state: { user }
                       }
                     }>
                     <li>
