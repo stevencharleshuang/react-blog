@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "A blogging app made with create-react-app, JWT and express",
   "main": "server/server.js",
+  "engines": {
+    "node": "10.8.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "client": "cd client && yarn start",
