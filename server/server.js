@@ -20,7 +20,7 @@ app.use('/api/auth', authRouter);
 app.use('/api/entries', entriesRouter);
 
 app.use("*", (req, res, next) => {
-  res.sendFile(path.join('..', 'client', 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, '..', 'client', 'public', 'index.html'));
 });
 
 // GLOBAL ERROR HANDLER
