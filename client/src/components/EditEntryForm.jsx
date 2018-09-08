@@ -26,7 +26,7 @@ export default class EditEntryForm extends React.Component {
 
   handleEditEntry(e) {
     e.preventDefault();
-    console.log('Creating entry with:', this.state);
+    // console.log('Creating entry with:', this.state);
     this.handleSubmit(this.state);
   }
 
@@ -42,14 +42,14 @@ export default class EditEntryForm extends React.Component {
     })
       .then(res => res.json())
       .then(response => {
-        console.log('Success:', (response))
+        // console.log('Success:', (response))
       })
       .catch(error => console.error('Error:', error));
   }
 
   render() {
-    console.log('EditEntryForm props:', this.props);
-    console.log('state: ', this.state);
+    // console.log('EditEntryForm props:', this.props);
+    // console.log('state: ', this.state);
     const entry = this.props.location.state.entry;
     const user = this.props.location.state.user;
     return(
