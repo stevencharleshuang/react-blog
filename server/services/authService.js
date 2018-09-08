@@ -38,5 +38,4 @@ module.exports = {
       next(err);
     }
   },
-
 }
