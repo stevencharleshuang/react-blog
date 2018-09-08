@@ -9,7 +9,9 @@ const UserService = {
     return window.localStorage.getItem('userID');
   },
   destroy() {
+    window.localStorage.removeItem('user');
     window.localStorage.removeItem('userID');
+    window.localStorage.removeItem('username');
   },
 };
 

@@ -48,7 +48,7 @@ export default class Entry extends React.Component {
   }
 
   render() {
-    console.log('Entry Props', this.props)
+    // console.log('Entry Props', this.props)
     // console.log('Entry State', this.state);
     const entry = this.props.location.state.entry
     // console.log('Entry entry:', entry);

@@ -34,8 +34,8 @@ export default class UserProfile extends React.Component {
   }
 
   render() {
-    console.log('UserProfile state: ', this.state);
-    console.log('UserProfile props: ', this.props);
+    // console.log('UserProfile state: ', this.state);
+    // console.log('UserProfile props: ', this.props);
     const user = this.state.user;
     // console.log('UserProfile user', user);
     // console.log('UserProfile user.id', user.id);

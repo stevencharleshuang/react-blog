@@ -31,7 +31,7 @@ export default class Entries extends React.Component {
         ? this.setState({ entries: response })
         : null;
       })
-      .catch(error => console.error('Error:', error));
+      // .catch(error => console.error('Error:', error));
   }
 
   render() {

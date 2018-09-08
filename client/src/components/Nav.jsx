@@ -7,7 +7,7 @@ export default function Nav(props) {
     // console.log('Nav state: ', props);
     // console.log('Nav props:', props);
     const user = JSON.parse(window.localStorage.getItem('user'));
-    console.log({user})
+    // console.log({user})
     return (
       <nav>
         <ul>
