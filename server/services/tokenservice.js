@@ -1,4 +1,4 @@
-/* tokenService.js patterns based on Jason Seminara's react-skeleton-api
+ /* tokenService.js patterns based on Jason Seminara's react-skeleton-api
    https://git.generalassemb.ly/wdi-nyc-rover/react-skeleton-api/blob/tokens/auth/TokenService.js */
 
 const jwt = require('jsonwebtoken');
