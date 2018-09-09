@@ -1,1 +1,6 @@
-static.json
+{
+  "root": "public/",
+  "routes": {
+    "/**": "index.html"
+  }
+}
