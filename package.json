@@ -13,7 +13,7 @@
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
     "seed": "psql -f server/db/schema.sql && psql -f server/db/seed.sql",
     "start": "cd server && node server.js",
-    "heroku-postbuild": "cd client && npm install && npm run build"
+    "heroku-postbuild": "cd client/ && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
   "keywords": [],
   "author": "Steven Charles Huang",
