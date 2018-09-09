@@ -21,6 +21,7 @@ module.exports = {
 
       // if the entered password does not match, throw an error
       // the error goes to the catch, ending the function
+
       if (!valid) {
         // throws custom error message
         throw new Error('Incorrect Password');
