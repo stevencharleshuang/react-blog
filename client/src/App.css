@@ -120,6 +120,13 @@ a:active, a:hover{
 }
 
 /* .users-directory */
+.App main .users-directory {
+  font-size: 5rem;
+}
+
+.App main .users-directory a {
+  font-size: 1.8rem;
+}
 .App main .users-directory ul {
   padding: 0;
   display: grid;
@@ -145,9 +152,46 @@ a:active, a:hover{
 }
 
 /* .user-profile */
+.App main .user-profile .user-info {
+  margin-top: 3rem;
+  font-size: 4.4rem;
+}
+
+.App main .user-profile .user-entries {
+  margin-top: 3rem;
+  font-size: 4rem;
+}
 
 /* .entries */
 .App main .entries li {
   padding: 1% 0;
   list-style: none;
+}
+
+/* .entry */
+.App main .entry {
+  margin: 0 auto;
+  font-size: 2.4rem;
+  width: 70%;
+}
+
+/* forms */
+form {
+  font-size: 2.4rem;
+}
+
+form input {
+  margin: 1%;
+  padding: 2%;
+}
+
+.App .create-entry-form {
+  margin: 3rem;
+  font-size: 2.8rem;
+}
+
+form textarea {
+  margin: 1%;
+  width: 70%;
+  height: auto;
 }

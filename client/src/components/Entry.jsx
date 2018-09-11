@@ -60,7 +60,7 @@ export default class Entry extends React.Component {
       );
     }
     return (
-      <div>
+      <div className="entry">
         <h1>Title: {entry.title}</h1>
         <h2>Date: {entry.date_created}</h2>
         <span>Location: {entry.location}</span>

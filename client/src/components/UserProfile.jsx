@@ -60,6 +60,7 @@ export default class UserProfile extends React.Component {
           }
         </div>
         <div className="user-entries">
+          <h2>Where IveBin</h2>
           {
             !this.state.authorized
               ? null

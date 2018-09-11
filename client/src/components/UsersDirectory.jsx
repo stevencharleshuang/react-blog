@@ -46,7 +46,7 @@ export default class UsersDirectory extends React.Component {
     })
     return (
       <div className="users-directory">
-        <h1>Users</h1>
+        <h1>TheyveBin</h1>
         <ul>
           {UsersDirectory}
         </ul>
