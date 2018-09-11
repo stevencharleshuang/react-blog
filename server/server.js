@@ -19,9 +19,12 @@ app.use('/api/users', usersRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/entries', entriesRouter);
 
-app.use("*", (req, res, next) => {
-  res.sendFile(path.join(__dirname, '..', 'client', 'public', 'index.html'));
-});
+// Serve static files from the React frontend app
+app.use(express.static(path.join(__dirname, 'client/build')))
+// Anything that doesn't match the above, send back index.html
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/client/build/index.html'))
+})
 
 // GLOBAL ERROR HANDLER
 app.use((err, req, res, next) => {
