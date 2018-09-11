@@ -74,8 +74,6 @@ class App extends Component {
           handleLogOut={this.handleLogOut}
           checkAuth={this.checkAuth}
         />
-        <h1>Welcome to React Blog, Dave</h1>
-        <br />
         <Switch>
           <Route path="/users/user/entry/:edit" component={EditEntryForm} />
           <Route path="/users/user/edit/:edit" component={EditUserForm} />

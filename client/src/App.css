@@ -1,5 +1,53 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
 .App {
   text-align: center;
 }
 
+.App nav {
+  padding: 5% 0;
+}
 
+.App nav ul {
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+}
+
+.App nav li {
+  padding: 0 5%;
+  display: inline-block;
+  list-style: none;
+}
+
+.App .users-directory ul {
+  padding: 0;
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20%;
+  justify-content: center;
+}
+
+.App .users-directory li {
+  align-self: center;
+  list-style: none;
+}
+
+.App .users-directory img {
+  width: 128px;
+  height: 128px;
+}
+
+.App .user-profile {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.App .entries li {
+  padding: 1% 0;
+  list-style: none;
+}

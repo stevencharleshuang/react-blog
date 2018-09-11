@@ -41,35 +41,38 @@ export default class UserProfile extends React.Component {
     // console.log('UserProfile user.id', user.id);
     return(
       <div className="user-profile">
-        <h1>Hello, {user.username}!</h1>
-        <br />
-        <img src={user.avatar_url} />
-        <br />
-        {
-          !this.state.authorized
-            ? null
-            : <Link to={
-                {
-                  pathname:`/users/user/edit/${ user.id }`,
-                  state: { user }
-                }
-              }>
-                Edit User
-              </Link>
-        }
-        <br />
-        {
-          !this.state.authorized
-            ? null
-            : <div className="user-profile-private">
-                <CreateEntryForm user={ user } />
-              </div>
-        }
-        <br />
-        <Entries user={ user } />
-        <br />
-      {/* Render Void
-      */}
+        <div className="user-info">
+          <h1>{user.username}</h1>
+          <br />
+          <img src={user.avatar_url} />
+          <br />
+          {
+            !this.state.authorized
+              ? null
+              : <Link to={
+                  {
+                    pathname:`/users/user/edit/${ user.id }`,
+                    state: { user }
+                  }
+                }>
+                  Edit User
+                </Link>
+          }
+        </div>
+        <div className="user-entries">
+          {
+            !this.state.authorized
+              ? null
+              : <div className="user-profile-private">
+                  <CreateEntryForm user={ user } />
+                </div>
+          }
+          <br />
+          <Entries user={ user } />
+          <br />
+        </div>
+        {/* Render Void
+        */}
       </div>
     );
   }
