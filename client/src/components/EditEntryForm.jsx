@@ -31,7 +31,7 @@ export default class EditEntryForm extends React.Component {
   }
 
   handleSubmit(formData) {
-    const url = `http://localhost:5000/api/entries/entry/${this.state.id}`;
+    const url = `/api/entries/entry/${this.state.id}`;
     fetch(url, {
       method: 'PUT',
       body: JSON.stringify(formData, this.state.id),

@@ -33,7 +33,7 @@ export default class LoginForm extends React.Component {
   }
 
   handleSubmit(formData) {
-    const url = 'http://localhost:5000/api/auth/login';
+    const url = '/api/auth/login';
     fetch(url, {
       method: 'POST',
       body: JSON.stringify(formData),
