@@ -1,53 +1,153 @@
+/*
+color schemes: #42b6f4;
+ */
+
 * {
   box-sizing: border-box;
   margin: 0;
+  font-size: 62.5%;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+a:link, a:visited {
+  font-size: 2.4rem;
+  color: blue;
+  text-decoration: none;
+}
+
+a:active, a:hover{
+  /*color: navy;*/
+  /*border: 1px solid navy;*/
+  text-decoration: underline;
 }
 
 .App {
+  height: 100%;
   text-align: center;
 }
 
+/* nav */
 .App nav {
-  padding: 5% 0;
+  padding: 1.0rem;
+  background-color: #42b6f4;
+}
+
+
+.App nav a {
+  margin: 0;
+  padding: 1%;
+  /*width: auto;*/
+  color: white;
+}
+
+.App nav a:hover, a:active {
+  border-radius: 10px;
+  background-color: #32a6e4;
 }
 
 .App nav ul {
   padding: 0;
   width: 100%;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
 }
 
 .App nav li {
   padding: 0 5%;
+  width: auto;
   display: inline-block;
+  align-self: center;
   list-style: none;
+  /* For selection inability */
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none;          /* Likely future */
 }
 
-.App .users-directory ul {
+.App nav .logo {
+  justify-self: start;
+  margin: 0;
+  padding: 0;
+  width: 2.6rem;
+  height: auto;
+}
+
+.App .nav-auth-options {
+  width: auto;
+  align-self: center;
+}
+
+.App main {
+  height: 100%;
+}
+
+/* .hero */
+.App main .hero {
+  padding: 25%;
+  height: 100%;
+  background-image: url(./images/bg-001.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: .6;
+  font-size: 5rem;
+  color: #32a6e6;
+  display: flex;
+  flex-flow: column nowrap;
+  text-shadow: 1px 1px 5px #000000;
+}
+
+.App main .hero h1 {
+  font-size: 6rem;
+  align-self: flex-start;
+}
+
+.App main .hero h2 {
+  align-self: flex-end;
+}
+
+/* .users-directory */
+.App main .users-directory ul {
   padding: 0;
   display: grid;
   grid-template-columns: 20% 20% 20% 20%;
   justify-content: center;
 }
 
-.App .users-directory li {
+.App main .users-directory li {
+  padding: 5%;
   align-self: center;
   list-style: none;
 }
 
-.App .users-directory img {
+.App main .users-directory img {
+  max-resolution: res;: 2%;
   width: 128px;
   height: 128px;
 }
 
-.App .user-profile {
+.App main .user-profile {
   display: grid;
   grid-template-columns: 50% 50%;
 }
 
-.App .entries li {
+/* .user-profile */
+
+/* .entries */
+.App main .entries li {
   padding: 1% 0;
   list-style: none;
 }

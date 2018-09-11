@@ -74,20 +74,22 @@ class App extends Component {
           handleLogOut={this.handleLogOut}
           checkAuth={this.checkAuth}
         />
-        <Switch>
-          <Route path="/users/user/entry/:edit" component={EditEntryForm} />
-          <Route path="/users/user/edit/:edit" component={EditUserForm} />
-          <Route path="/users/:username/:entry" component={Entry} />
-          <Route path="/users/:username" component={Entries} />
-          <Route path="/user/:id" component={UserProfile} />
-          <Route path="/entry_success" component={CreatedEntrySuccess} />
-          <Route path="/user/logged_out" component={LoggedOut} />
-          <Route exact path="/login" component={LoginForm} />
-          <Route exact path="/register" component={RegisterForm} />
-          <Route exact path="/users" component={UsersDirectory} />
-          <Route exact path="/" component={Hero} />
-          <Route component={ErrorPage} />
-        </Switch>
+        <main>
+          <Switch>
+            <Route path="/users/user/entry/:edit" component={EditEntryForm} />
+            <Route path="/users/user/edit/:edit" component={EditUserForm} />
+            <Route path="/users/:username/:entry" component={Entry} />
+            <Route path="/users/:username" component={Entries} />
+            <Route path="/user/:id" component={UserProfile} />
+            <Route path="/entry_success" component={CreatedEntrySuccess} />
+            <Route path="/user/logged_out" component={LoggedOut} />
+            <Route exact path="/login" component={LoginForm} />
+            <Route exact path="/register" component={RegisterForm} />
+            <Route exact path="/users" component={UsersDirectory} />
+            <Route exact path="/" component={Hero} />
+            <Route component={ErrorPage} />
+          </Switch>
+        </main>
       </div>
     );
   }

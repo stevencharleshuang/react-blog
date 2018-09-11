@@ -2,6 +2,7 @@ import React        from 'react';
 import { Redirect, Link }     from 'react-router-dom';
 import TokenService from '../services/TokenService';
 import UserService  from '../services/UserService';
+import Logo         from '..//images/logo.png';
 
 export default function Nav(props) {
     // console.log('Nav state: ', props);
@@ -11,7 +12,7 @@ export default function Nav(props) {
     return (
       <nav>
         <ul>
-          <Link to="/"><li>Home</li></Link>
+          <Link to="/"><li><img src={Logo} alt="ive-bin" className="logo" /></li></Link>
           <Link to="/users"><li>UsersDirectory</li></Link>
           {
             props.authenticated === true
@@ -24,7 +25,7 @@ export default function Nav(props) {
                       }
                     }>
                     <li>
-                      User Private Profile
+                      Profile
                     </li>
                   </Link>
                   <li>
