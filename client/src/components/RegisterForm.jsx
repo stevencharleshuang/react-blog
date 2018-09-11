@@ -32,7 +32,7 @@ export default class RegisterForm extends React.Component {
 
   handleSubmit(formData) {
     // console.log('handling submit!');
-    const url = 'http://localhost:5000/api/users';
+    const url = '/api/users';
     fetch(url, {
       method: 'POST',
       body: JSON.stringify(formData),
