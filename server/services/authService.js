@@ -3,7 +3,7 @@
 
 const bcrypt = require('bcrypt');
 const usersModel = require('../models/usersModel');
-const tokenService = require('./tokenservice');
+const tokenService = require('./tokenService');
 
 module.exports = {
   async authenticate(req, res, next) {
