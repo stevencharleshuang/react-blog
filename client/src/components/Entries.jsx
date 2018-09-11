@@ -15,7 +15,7 @@ export default class Entries extends React.Component {
   }
 
   componentWillMount() {
-    const url = `http://localhost:5000/api/entries/users/user/${this.state.user.id}`;
+    const url = `/api/entries/users/user/${this.state.user.id}`;
     // console.log(url);
     fetch(url, {
       method: 'GET',

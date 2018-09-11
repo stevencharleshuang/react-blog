@@ -10,7 +10,7 @@ export default class UsersDirectory extends React.Component {
   }
 
   componentWillMount() {
-    const url = 'http://localhost:5000/api/users';
+    const url = '/api/users';
     fetch(url, {
       method: 'GET',
       headers: {

@@ -16,7 +16,7 @@ export default class Entry extends React.Component {
 
   handleDelete() {
     // console.log('Baleeted!');
-    const url = `http://localhost:5000/api/entries/entry/${this.state.entry.id}`;
+    const url = `/api/entries/entry/${this.state.entry.id}`;
     fetch(url, {
       method: 'DELETE',
       headers: {

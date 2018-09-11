@@ -3,7 +3,7 @@
 
 const bcrypt = require('bcrypt');
 const usersModel = require('../models/usersModel');
-const tokenService = require('./tokenService');
+const tokenService = require('./tokenservice');
 
 module.exports = {
   async authenticate(req, res, next) {
@@ -21,6 +21,7 @@ module.exports = {
 
       // if the entered password does not match, throw an error
       // the error goes to the catch, ending the function
+
       if (!valid) {
         // throws custom error message
         throw new Error('Incorrect Password');
@@ -38,5 +39,4 @@ module.exports = {
       next(err);
     }
   },
-
 }

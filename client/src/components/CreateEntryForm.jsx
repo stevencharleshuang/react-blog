@@ -33,7 +33,7 @@ export default class CreateEntryForm extends React.Component {
   }
 
   handleSubmit(formData) {
-    const url = 'http://localhost:5000/api/entries';
+    const url = '/api/entries';
     fetch(url, {
       method: 'POST',
       body: JSON.stringify(formData),
