@@ -55,7 +55,9 @@ export default class UserProfile extends React.Component {
                     state: { user }
                   }
                 }>
+                  <button>
                   Edit User
+                  </button>
                 </Link>
           }
         </div>

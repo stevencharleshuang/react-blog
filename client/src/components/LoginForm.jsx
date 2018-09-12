@@ -82,6 +82,7 @@ export default class LoginForm extends React.Component {
     }
     return (
     <div className="login-form">
+      <h1>Log In</h1>
       <br />
       <form>
         <input

@@ -12,36 +12,41 @@ export default function Nav(props) {
     return (
       <nav>
         <ul>
-          <Link to="/"><li><img src={Logo} alt="ive-bin" className="logo" /></li></Link>
-          <Link to="/users"><li>UsersDirectory</li></Link>
+          <li>
+            <Link to="/">
+              <img src={Logo} alt="ive-bin" className="logo" />
+            </Link>
+          </li>
+          <li>
+            <Link to="/users">
+              Users Directory
+            </Link>
+          </li>
           {
             props.authenticated === true
               ? <div className="nav-auth-options">
                   <Link to=
-                    {
-                      {
-                        pathname: `/user/${user.id}`,
-                        state: { user }
-                      }
-                    }>
+                    {{
+                      pathname: `/user/${user.id}`,
+                      state: { user }
+                    }}
+                  >
                     <li>
                       Profile
                     </li>
                   </Link>
-                  <li>
-                    <button onClick={props.handleLogOut} data-id="logout">
+                  <a href="#">
+                    <li onClick={props.handleLogOut} data-id="logout">
                       Log Out
-                    </button>
-                  </li>
+                    </li>
+                  </a>
                 </div>
               : <div className="nav-auth-options">
                   <Link to=
-                    {
-                      {
-                        pathname: '/login',
-                        state: props.authenticated
-                      }
-                    }
+                    {{
+                      pathname: '/login',
+                      state: props.authenticated
+                    }}
                   >
                     <li>
                       Log In
