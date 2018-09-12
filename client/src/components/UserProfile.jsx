@@ -62,7 +62,6 @@ export default class UserProfile extends React.Component {
           }
         </div>
         <div className="user-entries">
-          <h2>Where IveBin</h2>
           {
             !this.state.authorized
               ? null
@@ -71,6 +70,7 @@ export default class UserProfile extends React.Component {
                 </div>
           }
           <br />
+          <h2>Where IveBin</h2>
           <Entries user={ user } />
           <br />
         </div>

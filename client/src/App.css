@@ -159,7 +159,7 @@ a:active, a:hover{
 
 /* .users-directory */
 .App main .users-directory {
-  padding-top: 5%;
+  margin-top: 5%;
   font-size: 5rem;
 }
 
@@ -186,7 +186,7 @@ a:active, a:hover{
 }
 
 .App main .user-profile {
-  padding-top: 5%;
+  margin-top: 5%;
   display: grid;
   grid-template-columns: 50% 50%;
 }
@@ -219,7 +219,7 @@ a:active, a:hover{
 /* .entry */
 .App main .entry {
   margin: 0 auto;
-  padding-top: 5%;
+  margin-top: 5%;
   font-size: 2.4rem;
   width: 70%;
 }
@@ -240,23 +240,28 @@ form input {
 }
 
 .App .create-entry-form {
-  padding-top: 5%;
   font-size: 2.8rem;
+  margin-top: 5%;
 }
 
 .App .login-form {
   font-size: 2.8rem;
-  padding-top: 5%;
+  margin-top: 5%;
 }
 
 .App .register-form {
   font-size: 2.8rem;
-  padding-top: 5%;
+  margin-top: 5%;
 }
 
 .App .edit-user-form {
   font-size: 2.8rem;
-  padding-top: 5%;
+  margin-top: 5%;
+}
+
+.App .edit-entry-form {
+  font-size: 2.8rem;
+  margin-top: 5%;
 }
 
 form textarea {
@@ -277,3 +282,94 @@ button:hover {
   background-color: #42b6f4;
   color: white;
 }
+
+/* Media Queries */
+/* Large Devices, Wide Screens */
+@media screen and (max-width : 1200px) {}
+
+/* Medium Devices, Desktops */
+@media screen and (max-width: 992px) {
+  .App main .users-directory ul {
+    grid-template-columns: 20% 20% 20%;
+    justify-content: center;
+  }
+}
+
+
+/* Small Devices, Tablets */
+@media screen and (max-width : 768px) {
+  .App main .users-directory ul {
+    grid-template-columns: 30% 30%;
+    justify-content: center;
+  }
+}
+
+/* Hotfix */
+@media screen and (max-width: 552px) {
+  .App nav {
+    height: auto;
+  }
+
+  .App nav ul {
+    grid-template-columns: auto;
+  }
+
+  .App main .hero {
+    padding-top: 100px;
+  }
+
+  .App main .users-directory {
+    margin-top: 100px;
+  }
+
+  .App main .user-profile {
+    grid-template-columns: 50%;
+    justify-content: center;
+  }
+
+  .App main .user-profile .user-info {
+    margin-top: 100px;
+  }
+
+  .App main .user-profile .user-entries {
+    margin-top: 50px;
+  }
+
+  .App main .entry {
+    margin-top: 100px;
+  }
+
+
+  /* forms */
+
+  .App .create-entry-form {
+    margin-top: 100px;
+  }
+
+  .App .login-form {
+    margin-top: 100px;
+  }
+
+  .App .register-form {
+    margin-top: 100px;
+  }
+
+  .App .edit-user-form {
+    margin-top: 100px;
+  }
+
+  .App .edit-entry-form {
+    margin-top: 100px;
+  }
+}
+
+/* Extra Small Devices, Phones */
+@media screen and (max-width : 480px) {
+  .App main .users-directory ul {
+    grid-template-columns: 50%;
+    justify-content: center;
+  }
+}
+
+/* Custom, iPhone Retina */
+@media screen and (max-width : 320px) {}
