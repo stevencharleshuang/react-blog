@@ -24,6 +24,7 @@ class App extends Component {
     this.state = {
       authenticated: false,
       logOutRedirect: false,
+      intViewportHeight: window.innerHeight,
     }
     this.handleLogOut = this.handleLogOut.bind(this);
   }
@@ -49,7 +50,7 @@ class App extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('>>> App compyWillRecProps: ', nextProps);
+    // console.log('>>> App compyWillRecProps: ', nextProps);
   }
 
   componentWillUpdate() {
@@ -60,13 +61,6 @@ class App extends Component {
     this.checkAuth();
     // console.log('>>> App state: ', this.state);
     // console.log('>>> App props: ', this.props);
-    // if (this.state.logOutRedirect) {
-    //   return (
-    //     !this.state.logOutRedirect
-    //       ? null
-    //       : <Redirect to='/user/logged_out' />
-    //   );
-    // }
     return (
       <div className="App">
         <Nav
@@ -74,22 +68,28 @@ class App extends Component {
           handleLogOut={this.handleLogOut}
           checkAuth={this.checkAuth}
         />
-        <h1>Welcome to React Blog, Dave</h1>
-        <br />
-        <Switch>
-          <Route path="/users/user/entry/:edit" component={EditEntryForm} />
-          <Route path="/users/user/edit/:edit" component={EditUserForm} />
-          <Route path="/users/:username/:entry" component={Entry} />
-          <Route path="/users/:username" component={Entries} />
-          <Route path="/user/:id" component={UserProfile} />
-          <Route path="/entry_success" component={CreatedEntrySuccess} />
-          <Route path="/user/logged_out" component={LoggedOut} />
-          <Route exact path="/login" component={LoginForm} />
-          <Route exact path="/register" component={RegisterForm} />
-          <Route exact path="/users" component={UsersDirectory} />
-          <Route exact path="/" component={Hero} />
-          <Route component={ErrorPage} />
-        </Switch>
+        <main>
+            {this.state.logOutRedirect === true
+              ? <Redirect to='/users' />
+              : null}
+          <Switch
+
+          >
+            <Route path="/users/user/entry/:edit" component={EditEntryForm} />
+            <Route path="/users/user/edit/:edit" component={EditUserForm} />
+            <Route path="/users/:username/:entry" component={Entry} />
+            <Route path="/users/:username" component={Entries} />
+            <Route path="/user/:id" component={UserProfile} />
+            <Route path="/entry_success" component={CreatedEntrySuccess} />
+            <Route path="/user/logged_out" component={LoggedOut} />
+            <Route exact path="/login" component={LoginForm} />
+            <Route exact path="/register" component={RegisterForm} />
+            <Route exact path="/users" component={UsersDirectory} />
+
+            <Route exact path="/" render={() => <Hero intViewportHeight={this.state.intViewportHeight} />}  />
+            <Route component={ErrorPage} />
+          </Switch>
+        </main>
       </div>
     );
   }

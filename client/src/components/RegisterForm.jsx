@@ -64,6 +64,8 @@ export default class RegisterForm extends React.Component {
     }
     return (
       <div className="register-form">
+        <h1>Sign Up</h1>
+        <br />
         <form>
           <input
             type="text"

@@ -1,5 +1,375 @@
+/*
+color schemes: #42b6f4;
+ */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-size: 62.5%;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+a:link, a:visited {
+  font-size: 2.4rem;
+  color: #1286c4;
+  text-decoration: none;
+}
+
+a:active, a:hover{
+  /*color: navy;*/
+  /*border: 1px solid navy;*/
+  text-decoration: underline;
+}
+
 .App {
+  margin: 0;
+  padding: 0;
+  height: 100%;
   text-align: center;
 }
 
+/* nav */
+.App nav {
+  position: fixed;
+  width: 100%;
+  height: 50px;
+  margin: 0;
+  padding: 0.5rem;
+  background-color: #42b6f4;
+  z-index: 50;
+}
 
+
+.App nav a {
+  margin: 0;
+  padding: 1%;
+  /*width: auto;*/
+  color: white;
+}
+
+.App nav a:hover, a:active {
+  border-radius: 5px;
+  background-color: #32a6e4;
+  text-decoration: none;
+}
+
+.App nav ul {
+  padding: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+}
+
+.App nav li {
+  padding: 0.5rem;
+  width: 100%;
+  display: inline-block;
+  align-self: center;
+  list-style: none;
+  /* Disables Text Selectability */
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none;          /* Likely future */
+}
+
+.App .nav-auth-options {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+
+.App nav .logo {
+  justify-self: start;
+  margin: 0;
+  padding: 0;
+  width: 2.6rem;
+  height: auto;
+}
+
+.App .nav-auth-options {
+  width: auto;
+  align-self: center;
+}
+
+.App main {
+  padding: 50px 0 0 0;
+  height: 100%;
+}
+
+/* .hero */
+.App main .hero {
+  padding: 2%;
+  width: 100%;
+  /*height: 100%;*/
+  background: rgba(0,0,0,.5) url(./images/bg-001.jpg) no-repeat;
+  background-size: cover;
+  background-blend-mode: multiply;
+/*  background-repeat: no-repeat;*/
+  /*opacity: .6;*/
+  font-size: 5rem;
+  /*color: #32a6e6;*/
+  /*color: black;*/
+  /*text-shadow: 1px 1px 5px #000000;*/
+  color: #42b6f4;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+/*.App main .hero .hero-text {
+  position: relative;
+  width: 75%;
+  height: 100%;
+  z-index: 50;
+  display: flex;
+  flex-flow: column nowrap;
+}*/
+
+.App main .hero img {
+  -webkit-filter: grayscale(60%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(60%);
+}
+
+.App main .hero h1 {
+  font-size: 6rem;
+  align-self: flex-start;
+}
+
+.App main .hero h2 {
+  align-self: flex-start;
+}
+
+.App main .hero h3 {
+  align-self: center;
+  color: white;
+}
+
+/* .users-directory */
+.App main .users-directory {
+  margin-top: 5%;
+  font-size: 5rem;
+}
+
+.App main .users-directory a {
+  font-size: 1.8rem;
+}
+.App main .users-directory ul {
+  padding: 0;
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20%;
+  justify-content: center;
+}
+
+.App main .users-directory li {
+  padding: 5%;
+  align-self: center;
+  list-style: none;
+}
+
+.App main .users-directory img {
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+}
+
+.App main .user-profile {
+  margin-top: 5%;
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+/* .user-profile */
+.App main .user-profile .user-info {
+  font-size: 4.4rem;
+}
+
+.App main .user-profile .user-info img {
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+}
+
+.App main .user-profile .user-entries {
+  font-size: 4rem;
+}
+
+/* .entries */
+.App main .entries {
+
+}
+
+.App main .entries li {
+  padding: 1% 0;
+  list-style: none;
+}
+
+/* .entry */
+.App main .entry {
+  margin: 0 auto;
+  margin-top: 5%;
+  font-size: 2.4rem;
+  width: 70%;
+}
+
+.App main .entry button {
+  margin-top: 2rem;
+  font-size: 1.4rem;
+}
+
+/* forms */
+form {
+  font-size: 2.4rem;
+}
+
+form input {
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.App .create-entry-form {
+  font-size: 2.8rem;
+  margin-top: 5%;
+}
+
+.App .login-form {
+  font-size: 2.8rem;
+  margin-top: 5%;
+}
+
+.App .register-form {
+  font-size: 2.8rem;
+  margin-top: 5%;
+}
+
+.App .edit-user-form {
+  font-size: 2.8rem;
+  margin-top: 5%;
+}
+
+.App .edit-entry-form {
+  font-size: 2.8rem;
+  margin-top: 5%;
+}
+
+form textarea {
+  margin: 1%;
+  width: 70%;
+  height: auto;
+}
+
+/* buttons */
+button {
+  margin: 0.5rem 0;
+  padding: 0.5rem 1rem;
+  border: 1px solid #42b6f4;
+  color: #42b6f4;
+}
+
+button:hover {
+  background-color: #42b6f4;
+  color: white;
+}
+
+/* Media Queries */
+/* Large Devices, Wide Screens */
+@media screen and (max-width : 1200px) {}
+
+/* Medium Devices, Desktops */
+@media screen and (max-width: 992px) {
+  .App main .users-directory ul {
+    grid-template-columns: 20% 20% 20%;
+    justify-content: center;
+  }
+}
+
+
+/* Small Devices, Tablets */
+@media screen and (max-width : 768px) {
+  .App main .users-directory ul {
+    grid-template-columns: 30% 30%;
+    justify-content: center;
+  }
+}
+
+/* Hotfix */
+@media screen and (max-width: 552px) {
+  .App nav {
+    height: auto;
+  }
+
+  .App nav ul {
+    grid-template-columns: auto;
+  }
+
+  .App main .hero {
+    padding-top: 100px;
+  }
+
+  .App main .users-directory {
+    margin-top: 100px;
+  }
+
+  .App main .user-profile {
+    grid-template-columns: 50%;
+    justify-content: center;
+  }
+
+  .App main .user-profile .user-info {
+    margin-top: 100px;
+  }
+
+  .App main .user-profile .user-entries {
+    margin-top: 50px;
+  }
+
+  .App main .entry {
+    margin-top: 100px;
+  }
+
+
+  /* forms */
+
+  .App .create-entry-form {
+    margin-top: 100px;
+  }
+
+  .App .login-form {
+    margin-top: 100px;
+  }
+
+  .App .register-form {
+    margin-top: 100px;
+  }
+
+  .App .edit-user-form {
+    margin-top: 100px;
+  }
+
+  .App .edit-entry-form {
+    margin-top: 100px;
+  }
+}
+
+/* Extra Small Devices, Phones */
+@media screen and (max-width : 480px) {
+  .App main .users-directory ul {
+    grid-template-columns: 50%;
+    justify-content: center;
+  }
+}
+
+/* Custom, iPhone Retina */
+@media screen and (max-width : 320px) {}

@@ -72,7 +72,7 @@ export default class CreateEntryForm extends React.Component {
     // console.log(this.state);
     return (
       <div className="create-entry-form">
-        <h1>Create Entry Form</h1>
+        <h1>Post Something</h1>
         <form>
           <input
             type="text"

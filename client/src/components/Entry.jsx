@@ -60,10 +60,11 @@ export default class Entry extends React.Component {
       );
     }
     return (
-      <div>
+      <div className="entry">
         <h1>Title: {entry.title}</h1>
         <h2>Date: {entry.date_created}</h2>
-        <span>Location: {entry.location}</span>
+        <h3>Location: {entry.location}</h3>
+        <br />
         <p>{entry.content}</p>
 
         {
@@ -82,7 +83,9 @@ export default class Entry extends React.Component {
                   </button>
                 </Link>
                 <br />
-                  <button onClick={this.handleDelete}>Delete Entry</button>
+                  <button onClick={this.handleDelete}>
+                    Delete Entry
+                  </button>
               </div>
         }
 
