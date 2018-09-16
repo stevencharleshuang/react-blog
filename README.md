@@ -21,6 +21,8 @@ A blogging app with authentication and authorization using React, JWT, bCrypt an
 * Moment
 * Body Parser
 * Jest
+* Enzyme
+* React Shallow Renderer
 
 
 
