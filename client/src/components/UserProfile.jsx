@@ -16,13 +16,16 @@ export default class UserProfile extends React.Component {
     }
   }
 
-  componentWillMount() {
+  componentWillMount(props) {
+    console.log('compyWillMounty props:', this.props);
+    console.log('compyWillMounty state:', this.state);
+
     if (window.localStorage.getItem('authToken')) {
       this.setState((prevState) => ({
         authenticated: !prevState.authenticated
       }));
     }
-    if (this.state.authenticated === false && this.state.user.id !== parseInt(window.localStorage.getItem('userID'))) {
+    if (this.state.authenticated === false && this.props.location.id !== parseInt(window.localStorage.getItem('userID'))) {
       this.setState((prevState) => ({
         authorized: false
       }));
@@ -35,9 +38,9 @@ export default class UserProfile extends React.Component {
 
   render() {
     // console.log('UserProfile state: ', this.state);
-    // console.log('UserProfile props: ', this.props);
+    console.log('UserProfile props: ', this.props);
     const user = this.state.user;
-    // console.log('UserProfile user', user);
+    console.log('UserProfile user', user);
     // console.log('UserProfile user.id', user.id);
     return(
       <div className="user-profile">

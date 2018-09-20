@@ -56,7 +56,14 @@ export default class Entry extends React.Component {
     if (this.state.redirect) {
       // console.log('Entry render(), redirect triggered')
       return (
-        <Redirect to={`/user/${user.id}`} />
+        !this.state.redirect
+        ? null
+        : <Redirect to= {
+            {
+              pathname: `/user/${user.id}`,
+              state: user
+            }
+          } />
       );
     }
     return (

@@ -283,6 +283,13 @@ button:hover {
   color: white;
 }
 
+/* Created Entry Success */
+.created-entry-success {
+  margin-top: 5%;
+  font-size: 2.8rem;
+}
+
+
 /* Media Queries */
 /* Large Devices, Wide Screens */
 @media screen and (max-width : 1200px) {}

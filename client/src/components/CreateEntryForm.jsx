@@ -62,7 +62,7 @@ export default class CreateEntryForm extends React.Component {
         ? null
         : <Redirect to= {
             {
-              pathname: `/entry_success`,
+              pathname: `/user/${this.state.user_id}`,
               state: this.state.user_id
             }
           } />
