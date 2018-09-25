@@ -49,17 +49,22 @@ class App extends Component {
     : null;
   }
 
+  componentWillMount() {
+    console.log('App.js compywillmounty');
+    this.checkAuth();
+  }
+
   componentWillReceiveProps(nextProps) {
     // console.log('>>> App compyWillRecProps: ', nextProps);
   }
 
   componentWillUpdate() {
-    // this.checkAuth();
+    console.log('App.js compywillupdy');
+    this.checkAuth();
   }
 
   render() {
-    this.checkAuth();
-    // console.log('>>> App state: ', this.state);
+    console.log('>>> App state: ', this.state);
     // console.log('>>> App props: ', this.props);
     return (
       <div className="App">
@@ -85,7 +90,6 @@ class App extends Component {
             <Route exact path="/login" component={LoginForm} />
             <Route exact path="/register" component={RegisterForm} />
             <Route exact path="/users" component={UsersDirectory} />
-
             <Route exact path="/" render={() => <Hero intViewportHeight={this.state.intViewportHeight} />}  />
             <Route component={ErrorPage} />
           </Switch>

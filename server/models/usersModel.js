@@ -49,7 +49,7 @@ module.exports =  {
   },
 
   updateUser(user, id) {
-    // console.log(`reached models, args = user: ${user.name} id: ${id}`);
+    console.log(`reached models, args = user: ${user.name} id: ${id}`);
     return db.one(`
          UPDATE users
             SET name       = $/name/,

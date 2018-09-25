@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Redirect, withRouter } from 'react-router-dom';
 import TokenService from '../services/TokenService';
 import UserService from '../services/UserService';
 
@@ -48,15 +48,20 @@ export default class Entry extends React.Component {
   }
 
   render() {
+    const entry = this.props.location.state.entry
+    const user = this.props.location.state.user
     // console.log('Entry Props', this.props)
     // console.log('Entry State', this.state);
-    const entry = this.props.location.state.entry
     // console.log('Entry entry:', entry);
-    const user = this.props.location.state.user
     if (this.state.redirect) {
       // console.log('Entry render(), redirect triggered')
       return (
-        <Redirect to={`/user/${user.id}`} />
+        <Redirect to={
+          {
+            pathname: `/user/${user.id}`,
+            state: { user }
+          }
+        } />
       );
     }
     return (
@@ -92,7 +97,7 @@ export default class Entry extends React.Component {
         <br />
         <Link to={
           {
-            pathname: `/users/${user.id}`,
+            pathname: `/user/${user.id}`,
             state: { user }
           }
         }>
