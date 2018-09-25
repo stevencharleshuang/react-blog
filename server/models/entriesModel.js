@@ -60,17 +60,16 @@ module.exports =  {
   },
 
   updateEntry(entry, id) {
-    // console.log(`reached models, args = entry: ${entry.title} id: ${id}`);
-    entry.id = id
+    console.log(`reached models, args = entry: ${entry.title} id: ${id}`);
     return db.one(`
          UPDATE entries
             SET date_created = $/date_created/,
                 location     = $/location/,
                 title        = $/title/,
                 content      = $/content/
-          WHERE id = $/id/
+          WHERE id = ${id}
       RETURNING *;
-    `, entry);
+    `, entry, id);
   },
 
   deleteEntryByID(id) {

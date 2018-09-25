@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 export default class EditUserForm extends React.Component {
   constructor(props) {
@@ -11,6 +11,7 @@ export default class EditUserForm extends React.Component {
       email: this.props.location.state.user.email,
       password: this.props.location.state.user.password,
       avatar_url: this.props.location.state.user.avatar_url,
+      redirect: false,
     }
     this.handleOnChange = this.handleOnChange.bind(this);
     this.handleEditUser = this.handleEditUser.bind(this);
@@ -27,7 +28,7 @@ export default class EditUserForm extends React.Component {
 
   handleEditUser(e) {
     e.preventDefault();
-    console.log('Editing user with:', this.state);
+    // console.log('Editing user with:', this.state);
     this.handleSubmit(this.state);
   }
 
@@ -43,15 +44,36 @@ export default class EditUserForm extends React.Component {
     })
       .then(res => res.json())
       .then(response => {
-        console.log('Success:', (response))
+        // console.log('Success:', (response));
+        this.setState((prevState) => ({
+          redirect: !prevState.redirect
+        }));
       })
       .catch(error => console.error('Error:', error));
   }
 
   render() {
-    console.log('EditUserForm props:', this.props);
+    // console.log('EditUserForm props:', this.props);
     console.log('Edit User Form state: ', this.state);
-    const user = this.props.location.state.user
+    const user = {
+      id: this.state.id,
+      username: this.state.username,
+      name: this.state.name,
+      email: this.state.email,
+      password: this.state.password,
+      avatar_url: this.state.avatar_url
+    }
+    // console.log('EditUserForm user:', user);
+    if (this.state.redirect) {
+      return (
+        <Redirect to= {
+          {
+            pathname: `/user/${user.id}`,
+            state: { user }
+          }
+        } />
+      );
+    }
     return(
       <div className="edit-user-form">
         <h1>Edit User Form</h1>

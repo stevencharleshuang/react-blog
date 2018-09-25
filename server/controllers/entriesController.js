@@ -54,7 +54,9 @@ module.exports = {
 
   async editEntry(req, res, next) {
     try {
+      console.log('userController editEntry() says: req.body = ', req.body);
       res.locals.entry = await entriesModel.updateEntry(req.body, req.params.id);
+      console.log('userController says: res.locals.entry = ', res.locals.entry);
       next();
     }
     catch (err) {

@@ -10,6 +10,7 @@ export default class EditEntryForm extends React.Component {
       location: this.props.location.state.entry.location,
       title: this.props.location.state.entry.title,
       content: this.props.location.state.entry.content,
+      user_id: this.props.location.state.entry.user_id
     }
     this.handleOnChange = this.handleOnChange.bind(this);
     this.handleEditEntry = this.handleEditEntry.bind(this);
@@ -48,8 +49,8 @@ export default class EditEntryForm extends React.Component {
   }
 
   render() {
-    // console.log('EditEntryForm props:', this.props);
-    // console.log('state: ', this.state);
+    console.log('EditEntryForm props:', this.props);
+    console.log('state: ', this.state);
     const entry = this.props.location.state.entry;
     const user = this.props.location.state.user;
     return(
